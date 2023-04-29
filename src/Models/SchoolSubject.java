@@ -1,7 +1,10 @@
 package Models;
 
+import java.util.List;
+
 public class SchoolSubject {
     public String className;
     public String teacher;
-    public Grade grade;
+    public List<Grade> grades;
+
 }
