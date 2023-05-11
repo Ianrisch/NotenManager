@@ -1,16 +1,16 @@
 package Utils;
-import Models.Person;
+
 import Models.Grade;
+import Models.Person;
 import Models.SchoolSubject;
-import org.json.JSONObject;
 import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.util.List;
+
 public class DataService {
     public static JSONObject ParseSchoolSubjectToJson(SchoolSubject schoolSubject) {
-
-        String path = "C:/Users/DataService.json";
 
         JSONObject tempObj = new JSONObject();
         tempObj.put("name", schoolSubject.name);
@@ -45,11 +45,11 @@ public class DataService {
         return jsonArray;
     }
 
-    private static void PrintJasonDatei(String path,JSONObject tempObj) {
-    try (PrintWriter out = new PrintWriter(new FileWriter(path))) {
-        out.write(tempObj.toString());
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
+    private static void WriteToFile(String path, JSONObject tempObj) {
+        try (FileWriter out =new FileWriter(path)) {
+            out.write(tempObj.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
