@@ -3,10 +3,14 @@ package Utils;
 import Models.Grade;
 import Models.Person;
 import Models.SchoolSubject;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DataService {
@@ -45,10 +49,20 @@ public class DataService {
         return jsonArray;
     }
 
-    private static void WriteToFile(String path, JSONObject tempObj) {
+    public static void WriteToFile(String path, JSONObject tempObj) {
         try (FileWriter out =new FileWriter(path)) {
             out.write(tempObj.toString());
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void WriteToFile(String path, ArrayList<SchoolSubject> schoolSubjects) {
+        ObjectMapper mapper = new ObjectMapper();
+
+        // Java object to JSON file
+        try {
+            mapper.writeValue(new File("c:\\test\\staff.json"), schoolSubjects);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
