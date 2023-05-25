@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataService {
-    public static JSONObject ParseSchoolSubjectToJson(SchoolSubject schoolSubject) {
+    private static JSONObject ParseSchoolSubjectToJson(SchoolSubject schoolSubject) {
 
         JSONObject tempObj = new JSONObject();
         tempObj.put("name", schoolSubject.name);
@@ -22,6 +22,54 @@ public class DataService {
         tempObj.put("grades", ParseGradeListToJson(schoolSubject.grades));
 
         return tempObj;
+    }
+
+    private static List<SchoolSubject> ParseSchoolSubjectsFromJson(String jsonString) {
+        JSONArray objectArray = new JSONArray(jsonString);
+        List<SchoolSubject> result = new ArrayList();
+
+        for (int i = 0; i < objectArray.length(); i++) {
+            JSONObject object = objectArray.getJSONObject(i);
+            result.add(JsonToSchoolSubject(object));
+        }
+
+        return result;
+    }
+
+    private static SchoolSubject JsonToSchoolSubject(JSONObject object) {
+        Person teacher = JsonToPerson(object.getJSONObject("teacher"));
+        String name = object.getString("name");
+        List<Grade> grades = JsonToGradeList(object.getJSONArray("grades"));
+        SchoolSubject subject = new SchoolSubject(
+                teacher,
+                name,
+                grades
+        );
+
+        return subject;
+    }
+
+    private static List<Grade> JsonToGradeList(JSONArray grades) {
+        List<Grade> gradesResult = new ArrayList();
+        for (int i = 0; i < grades.length(); i++) {
+            JSONObject grade = grades.getJSONObject(i);
+            gradesResult.add(JsonToGrade(grade));
+        }
+        return gradesResult;
+    }
+
+    private static Grade JsonToGrade(JSONObject grade) {
+        float value = grade.getFloat("value");
+        double gravity = grade.getDouble("gravity");
+        Grade result = new Grade(value, gravity);
+        return result;
+    }
+
+    private static Person JsonToPerson(JSONObject teacher) {
+        String firstName = teacher.getString("firstName");
+        String lastName = teacher.getString("lastName");
+        Person person = new Person(firstName, lastName);
+        return person;
     }
 
     private static JSONObject ParseGradeToJson(Grade grade) {
@@ -42,21 +90,32 @@ public class DataService {
 
     private static JSONArray ParseGradeListToJson(List<Grade> grades) {
         JSONArray jsonArray = new JSONArray();
-        for (Grade grade :
-                grades) {
+        for (Grade grade : grades) {
             jsonArray.put(ParseGradeToJson(grade));
         }
         return jsonArray;
     }
 
-    public static void WriteToFile(String path, JSONObject tempObj) {
-        try (FileWriter out =new FileWriter(path)) {
-            out.write(tempObj.toString());
+    public static void WriteToFile(String path, SchoolSubject schoolSubject) {
+        try (FileWriter out = new FileWriter(path)) {
+            JSONObject jsonobject = ParseSchoolSubjectToJson(schoolSubject);
+            out.write(jsonobject.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public static void WriteToFile(String path, ArrayList<SchoolSubject> schoolSubjects) {
+
+    private static JSONArray ParseMultipleSchoolSubjectsToJson(List<SchoolSubject> schoolSubjects) {
+        JSONArray newObj = new JSONArray();
+        for (int i = 0; i < schoolSubjects.size(); i++) {
+            JSONObject object = ParseSchoolSubjectToJson(schoolSubjects.get(i));
+            newObj.put(object);
+        }
+        return newObj;
+    }
+
+
+    public static void WriteToFile(String path, List<SchoolSubject> schoolSubjects) {
         ObjectMapper mapper = new ObjectMapper();
 
         // Java object to JSON file
