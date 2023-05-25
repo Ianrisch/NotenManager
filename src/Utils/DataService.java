@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,10 +98,12 @@ public class DataService {
         return jsonArray;
     }
 
-    public static void WriteToFile(String path, SchoolSubject schoolSubject) {
-        try (FileWriter out = new FileWriter(path)) {
+    public static void WriteToFile(SchoolSubject schoolSubject) {
+        try {
+            FileWriter out = new FileWriter(getJsonPath());
             JSONObject jsonobject = ParseSchoolSubjectToJson(schoolSubject);
             out.write(jsonobject.toString());
+            out.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -115,14 +119,43 @@ public class DataService {
     }
 
 
-    public static void WriteToFile(String path, List<SchoolSubject> schoolSubjects) {
+    public static void WriteToFile(List<SchoolSubject> schoolSubjects) {
         ObjectMapper mapper = new ObjectMapper();
 
         // Java object to JSON file
         try {
-            mapper.writeValue(new File("c:\\test\\staff.json"), schoolSubjects);
+            mapper.writeValue(new File(getJsonPath()), schoolSubjects);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static String getJsonPath() {
+        return GetRunningPath() + "/data.json";
+    }
+
+    public static List<SchoolSubject> GetFromFile(){
+        List<SchoolSubject> subjects = new ArrayList();
+        try{
+            String data = Files.readString(Path.of(getJsonPath()));
+            subjects = ParseSchoolSubjectsFromJson(data);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            System.out.println("File is not Created Creating a File!");
+            try {
+                FileWriter out = new FileWriter(getJsonPath());
+                out.write("[]");
+                out.close();
+            } catch (Exception error2) {
+                error2.printStackTrace();
+            }
+
+        }
+        return subjects;
+    }
+
+    public static String GetRunningPath() {
+        return System.getProperty("user.dir");
     }
 }
