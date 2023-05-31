@@ -1,21 +1,18 @@
-package Utils;
+package Utils.Dataservice;
 
 import Models.Grade;
 import Models.Person;
 import Models.SchoolSubject;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataService {
+public class CustomJsonServiceHelper {
     private static JSONObject ParseSchoolSubjectToJson(SchoolSubject schoolSubject) {
 
         JSONObject tempObj = new JSONObject();
@@ -98,6 +95,15 @@ public class DataService {
         return jsonArray;
     }
 
+    private static JSONArray ParseMultipleSchoolSubjectsToJson(List<SchoolSubject> schoolSubjects) {
+        JSONArray newObj = new JSONArray();
+        for (int i = 0; i < schoolSubjects.size(); i++) {
+            JSONObject object = ParseSchoolSubjectToJson(schoolSubjects.get(i));
+            newObj.put(object);
+        }
+        return newObj;
+    }
+
     public static void WriteToFile(SchoolSubject schoolSubject) {
         try {
             FileWriter out = new FileWriter(getJsonPath());
@@ -108,32 +114,6 @@ public class DataService {
             e.printStackTrace();
         }
     }
-
-    private static JSONArray ParseMultipleSchoolSubjectsToJson(List<SchoolSubject> schoolSubjects) {
-        JSONArray newObj = new JSONArray();
-        for (int i = 0; i < schoolSubjects.size(); i++) {
-            JSONObject object = ParseSchoolSubjectToJson(schoolSubjects.get(i));
-            newObj.put(object);
-        }
-        return newObj;
-    }
-
-
-    public static void WriteToFile(List<SchoolSubject> schoolSubjects) {
-        ObjectMapper mapper = new ObjectMapper();
-
-        // Java object to JSON file
-        try {
-            mapper.writeValue(new File(getJsonPath()), schoolSubjects);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static String getJsonPath() {
-        return GetRunningPath() + "/data.json";
-    }
-
     public static List<SchoolSubject> GetFromFile(){
         List<SchoolSubject> subjects = new ArrayList();
         try{
@@ -155,7 +135,12 @@ public class DataService {
         return subjects;
     }
 
+    public static String getJsonPath() {
+        return GetRunningPath() + "/data.json";
+    }
+
     public static String GetRunningPath() {
         return System.getProperty("user.dir");
     }
+
 }

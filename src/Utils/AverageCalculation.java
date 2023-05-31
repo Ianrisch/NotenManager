@@ -8,7 +8,6 @@ public class AverageCalculation {
         double allGradesAdded = 0;
         for(Grade grade : subject.grades) {
             allGradesAdded += grade.Value;
-            System.out.println(allGradesAdded);
         }
         long gradeCount = subject.grades.size();
         double average = allGradesAdded/gradeCount;
