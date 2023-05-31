@@ -1,6 +1,6 @@
-package Utils.Dataservice;
+package org.notenmanager.Utils.Dataservice;
 
-import Models.*;
+import org.notenmanager.Models.*;
 
 import java.util.List;
 

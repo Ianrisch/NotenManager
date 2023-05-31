@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5cdb07f4-fc09-4e7d-a7bb-e5d9668e5c93" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/DatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/fasterxml_jackson_core_databind.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/json.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotenManager.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/Grade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/SchoolClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/SchoolClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/SchoolSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/SchoolSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/AverageCalculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/AverageCalculation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Consumer/IOConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Consumer/IOConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Consumer/OConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Consumer/OConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Dataservice/CustomJsonServiceHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Dataservice/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/DataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Dataservice/JsonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/JsonService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2QZsfFHBSEaMjzWM0qF0Y08KZxB" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "F:/repos/NotenManager",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.notenmanager.App" />
+      <module name="NotenManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.notenmanager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5cdb07f4-fc09-4e7d-a7bb-e5d9668e5c93" name="Changes" comment="" />
+      <created>1685572538606</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685572538606</updated>
+    </task>
+    <servers />
+  </component>
+</project>

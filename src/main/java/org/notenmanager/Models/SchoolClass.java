@@ -1,5 +1,8 @@
-package Models;
+package org.notenmanager.Models;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class SchoolClass {
     public String name;
 

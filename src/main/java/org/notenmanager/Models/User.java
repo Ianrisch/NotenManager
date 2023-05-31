@@ -1,5 +1,8 @@
-package Models;
+package org.notenmanager.Models;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class User {
     public String username;
     public String password;

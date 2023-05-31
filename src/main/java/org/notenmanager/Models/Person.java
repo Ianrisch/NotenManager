@@ -1,8 +1,11 @@
-package Models;
+package org.notenmanager.Models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
 
+
+@Entity
 public class Person {
     public String firstName;
     public String lastName;

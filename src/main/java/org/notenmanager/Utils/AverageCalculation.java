@@ -1,7 +1,8 @@
-package Utils;
+package org.notenmanager.Utils;
 
-import Models.Grade;
-import Models.SchoolSubject;
+
+import org.notenmanager.Models.Grade;
+import org.notenmanager.Models.SchoolSubject;
 
 public class AverageCalculation {
     public static double average(SchoolSubject subject) {

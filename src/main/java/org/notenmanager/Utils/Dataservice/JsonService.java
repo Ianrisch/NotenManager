@@ -1,12 +1,11 @@
-package Utils.Dataservice;
+package org.notenmanager.Utils.Dataservice;
 
-import Models.Grade;
-import Models.Person;
-import Models.SchoolSubject;
-import Models.User;
+
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.notenmanager.Models.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -33,7 +32,7 @@ public class JsonService implements DataService {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         try {
-            listSchool = mapper.readValue(new File(getSchoolSubjectListPath(username)), new TypeReference<>() {
+            listSchool = mapper.readValue(new File(getSchoolSubjectListPath(username)), new TypeReference<List<SchoolSubject>>() {
             });
         } catch (IOException e) {
             e.printStackTrace();

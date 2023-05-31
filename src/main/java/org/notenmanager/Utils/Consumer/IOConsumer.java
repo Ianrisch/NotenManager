@@ -1,15 +1,15 @@
-package Utils.Consumer;
+package org.notenmanager.Utils.Consumer;
 
 import java.util.Objects;
 
-public interface OConsumer<Output> {
-
+public interface IOConsumer<Input, Output> {
     /**
-     * Performs this operation.
+     * Performs this operation on the given argument.
      *
+     * @param input the input argument
      * @return {@code Output Type}
      */
-    Output accept();
+    Output accept(Input input);
 
     /**
      * Returns a composed {@code Consumer} that performs, in sequence, this
@@ -23,11 +23,11 @@ public interface OConsumer<Output> {
      * operation followed by the {@code after} operation
      * @throws NullPointerException if {@code after} is null
      */
-    default OConsumer<Output> andThen(OConsumer<Output> after) {
+    default IOConsumer<Input, Output> andThen(IOConsumer<Input, Output> after) {
         Objects.requireNonNull(after);
-        return () -> {
-            accept();
-            return after.accept();
+        return (Input t) -> {
+            accept(t);
+            return  after.accept(t);
         };
     }
 }
