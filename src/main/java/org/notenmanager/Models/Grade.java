@@ -5,19 +5,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Grades")
 public class Grade {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    public float Value;
-    public double Gravity;
+    public float value;
+    public double gravity;
 
     public Grade(float value, double gravity) {
-        Value = value;
-        Gravity = gravity;
+        this.value = value;
+        this.gravity = gravity;
     }
+
+    public Grade() {
+    }
+
     @JsonCreator
-    private static Grade createGrade(@JsonProperty("value") float value, @JsonProperty("gravity") float gravity){
-        return new Grade(value,gravity);
+    private static Grade createGrade(@JsonProperty("value") float value, @JsonProperty("gravity") float gravity) {
+        return new Grade(value, gravity);
+    }
+
+    /**
+     * Only for DB pls ignore!!
+     */
+    @ManyToOne
+    @JoinColumn(name = "subject_id",nullable = false)
+    private SchoolSubject subject;
+    public void addRelationPartner(SchoolSubject subject) {
+        this.subject = subject;
     }
 }

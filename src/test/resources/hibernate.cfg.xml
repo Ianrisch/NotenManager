@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://db.stairtumbler.company:26007/noten_manager_develop</property>
+        <property name="connection.username">notenmanager</property>
+        <property name="connection.password">!!!!!SET PASSWORD!!!!!</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- Names the annotated entity class -->
+        <mapping class="org.notenmanager.Models.Grade"/>
+        <mapping class="org.notenmanager.Models.Person"/>
+        <mapping class="org.notenmanager.Models.SchoolClass"/>
+        <mapping class="org.notenmanager.Models.SchoolSubject"/>
+        <mapping class="org.notenmanager.Models.User"/>
+
+    </session-factory>
+
+</hibernate-configuration>
