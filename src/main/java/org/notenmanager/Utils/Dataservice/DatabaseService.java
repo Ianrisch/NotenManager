@@ -23,7 +23,11 @@ public class DatabaseService implements DataService{
 
     @Override
     public User GetUser(String username) {
-        return null;
+        return CreateSessionAndExecute(session ->
+                session.createQuery(
+                        "from User u where u.username = '" + username + "'",
+                        User.class).getSingleResult()
+        );
     }
 
     @Override
