@@ -16,7 +16,7 @@ import java.util.Objects;
 import org.hibernate.boot.MetadataSources;
 import org.notenmanager.Models.*;
 
-import java.util.List;
+public class DatabaseService implements DataService {
     private SessionFactory sessionFactory;
 
     public DatabaseService() {
@@ -50,8 +50,29 @@ import java.util.List;
     }
 
     @Override
-    public void CreateUser(User user) {
+    public void CreateUser(User user) throws UserAlreadyExistsException {
+        CreateSessionAndExecute(session -> {
 
+            if (GetSchoolClass(user.schoolClass.name) == null) {
+                session.persist(user.schoolClass);
+            }
+
+            if (!UserExist(user.username)) {
+                session.persist(user);
+            } else {
+                throw new UserAlreadyExistsException("User with username:  [" + user.username + "] already exists!");
+            }
+
+            return null;
+        });
+    }
+
+    private SchoolClass GetSchoolClass(String name) {
+        return CreateSessionAndExecute(session ->
+                session.createQuery(
+                        "from SchoolClass class where class.name = '" + name + "'",
+                        SchoolClass.class).getSingleResult()
+        );
     }
 
     @Override
@@ -85,7 +106,24 @@ import java.util.List;
 
     @Override
     public List<SchoolSubject> GetSchoolSubjectsFromUser(User user) {
-        return null;
+    }
+
+    private <Output> Output CreateSessionAndExecute(IOConsumer<Session, Output> consumer) {
+        Output output = null;
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            output = consumer.accept(session);
+
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            if (e instanceof AlreadyExistsException) {
+                throw e;
+            }
+            e.printStackTrace();
+            return null;
+        }
+        return output;
     }
 
     @Override
