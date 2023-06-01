@@ -1,5 +1,7 @@
 package org.notenmanager.Models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,5 +19,10 @@ public class SchoolClass {
 
     public SchoolClass(String name) {
         this.name = name;
+    }
+
+    @JsonCreator
+    private static SchoolClass jsonCreator(@JsonProperty("name") String name){
+        return new SchoolClass(name);
     }
 }

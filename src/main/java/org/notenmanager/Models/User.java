@@ -1,5 +1,7 @@
 package org.notenmanager.Models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -30,5 +32,9 @@ public class User {
         this.mail = mail;
         this.schoolClass = schoolClass;
         this.schoolSubjects = new ArrayList<>();
+    }
+    @JsonCreator
+    private static User  jsonCreator(@JsonProperty("username") String username,@JsonProperty("password") String password,@JsonProperty("mail") String mail,@JsonProperty("schoolClass") SchoolClass schoolClass){
+        return new User(username,password,mail,schoolClass);
     }
 }

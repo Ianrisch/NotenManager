@@ -60,7 +60,7 @@ public class DatabaseService implements DataService {
             if (!UserExist(user.username)) {
                 session.persist(user);
             } else {
-                throw new UserAlreadyExistsException("User with username:  [" + user.username + "] already exists!");
+                throw new UserAlreadyExistsException(user);
             }
 
             return null;
@@ -106,7 +106,7 @@ public class DatabaseService implements DataService {
 
     @Override
     public List<SchoolSubject> GetSchoolSubjectsFromUser(User user) {
-    }
+    return null;}
 
     private <Output> Output CreateSessionAndExecute(IOConsumer<Session, Output> consumer) {
         Output output = null;
