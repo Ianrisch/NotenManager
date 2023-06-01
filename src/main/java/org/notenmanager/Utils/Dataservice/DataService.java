@@ -7,7 +7,7 @@ import java.util.List;
 public interface DataService {
 
     public void CreateUser(User user);
-    public void UserExist(String username);
+    public boolean UserExist(String username);
     public boolean AuthenticateUser(String username, String password);
     public User GetUser(String username);
     public void DeleteUser(String username);

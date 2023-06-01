@@ -5,33 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cdb07f4-fc09-4e7d-a7bb-e5d9668e5c93" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/fasterxml_jackson_core_databind.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/json.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NotenManager.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Tests.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/Grade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/SchoolClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/SchoolClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/SchoolSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/SchoolSubject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/AverageCalculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/AverageCalculation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Consumer/IOConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Consumer/IOConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Consumer/OConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Consumer/OConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Dataservice/CustomJsonServiceHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Dataservice/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/DataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Dataservice/JsonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/JsonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notenmanager/Exceptions/AlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Exceptions/AlreadyExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/Grade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/SchoolClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/SchoolClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/SchoolSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/SchoolSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/AverageCalculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/AverageCalculation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/DataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/DatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/JsonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/JsonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/notenmanager/AppTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,6 +38,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2QZsfFHBSEaMjzWM0qF0Y08KZxB" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -50,17 +51,23 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "F:/repos/NotenManager",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
+    "last_opened_file_path": "F:/repos/NotenManager/src/test/resources",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\repos\NotenManager\src\test\resources" />
+      <recent name="F:\repos\NotenManager\src\test\java\org\notenmanager" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.DeleteUserTests">
+    <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.notenmanager.App" />
       <module name="NotenManager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.notenmanager.*" />
+          <option name="PATTERN" value="org.notenmanager.DataBaseServiceTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -68,9 +75,91 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AuthenticateUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NotenManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.notenmanager.DataBaseServiceTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.notenmanager.DataBaseServiceTests" />
+      <option name="MAIN_CLASS_NAME" value="org.notenmanager.DataBaseServiceTests.AuthenticateUser" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthenticateUser.Should_not_Authenticate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NotenManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.notenmanager.DataBaseServiceTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.notenmanager.DataBaseServiceTests" />
+      <option name="MAIN_CLASS_NAME" value="org.notenmanager.DataBaseServiceTests.AuthenticateUser" />
+      <option name="METHOD_NAME" value="Should_not_Authenticate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DeleteUserTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NotenManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.notenmanager.DataBaseServiceTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.notenmanager.DataBaseServiceTests" />
+      <option name="MAIN_CLASS_NAME" value="org.notenmanager.DataBaseServiceTests.DeleteUserTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DeleteUserTests.Should_delete_User" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NotenManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.notenmanager.DataBaseServiceTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.notenmanager.DataBaseServiceTests" />
+      <option name="MAIN_CLASS_NAME" value="org.notenmanager.DataBaseServiceTests.DeleteUserTests" />
+      <option name="METHOD_NAME" value="Should_delete_User" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DeleteUserTests.Should_do_nothing_on_wrong_User" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NotenManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.notenmanager.DataBaseServiceTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.notenmanager.DataBaseServiceTests" />
+      <option name="MAIN_CLASS_NAME" value="org.notenmanager.DataBaseServiceTests.DeleteUserTests" />
+      <option name="METHOD_NAME" value="Should_do_nothing_on_wrong_User" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.DeleteUserTests" />
+        <item itemvalue="JUnit.DeleteUserTests.Should_do_nothing_on_wrong_User" />
+        <item itemvalue="JUnit.DeleteUserTests.Should_delete_User" />
+        <item itemvalue="JUnit.AuthenticateUser.Should_not_Authenticate" />
+        <item itemvalue="JUnit.AuthenticateUser" />
       </list>
     </recent_temporary>
   </component>
@@ -84,5 +173,55 @@
       <updated>1685572538606</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/notenmanager/DataBaseServiceTests/CreateUserTests.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/DatabaseService.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/notenmanager/Utils/Dataservice/DatabaseService.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/org/notenmanager/DataBaseServiceTests/CreateUserTests.java</url>
+          <line>27</line>
+          <properties class="org.notenmanager.DataBaseServiceTests.CreateUserTests" method="Should_Throw_when_User_exists_already">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/org/notenmanager/DataBaseServiceTests/CreateUserTests.java</url>
+          <line>13</line>
+          <properties class="org.notenmanager.DataBaseServiceTests.CreateUserTests" method="Should_Create_User">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

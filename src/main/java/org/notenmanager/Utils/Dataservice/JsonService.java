@@ -54,8 +54,9 @@ public class JsonService implements DataService {
     }
 
     @Override
-    public void UserExist(String username) {
+    public boolean UserExist(String username) {
 
+        return false;
     }
 
     @Override
