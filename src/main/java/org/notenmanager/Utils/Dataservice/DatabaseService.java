@@ -18,7 +18,8 @@ public class DatabaseService implements DataService{
 
     @Override
     public boolean AuthenticateUser(String username, String password) {
-        return false;
+        User user = GetUser(username);
+        return user != null ? Objects.equals(user.password, password) : false;
     }
 
     @Override
