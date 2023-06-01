@@ -12,8 +12,8 @@ public class DatabaseService implements DataService{
     }
 
     @Override
-    public void UserExist(String username) {
-
+    public boolean UserExist(String username) {
+        return GetUser(username) != null;
     }
 
     @Override
