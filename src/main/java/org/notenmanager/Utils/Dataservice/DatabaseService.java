@@ -33,7 +33,11 @@ public class DatabaseService implements DataService{
 
     @Override
     public void DeleteUser(String username) {
-
+        User user = GetUser(username);
+        CreateSessionAndExecute(session -> {
+            session.delete(user);
+            return null;
+        });
     }
 
     @Override
