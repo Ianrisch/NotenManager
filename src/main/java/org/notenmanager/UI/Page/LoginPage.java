@@ -16,16 +16,16 @@ import java.util.List;
 import java.util.Objects;
 
 public class LoginPage extends JFrame {
-    private JPanel base = new JPanel();
-    private JComboBox ComboBox = new JComboBox();
-    private JPanel content = new JPanel();
+    private final JPanel base = new JPanel();
+    private final JComboBox ComboBox = new JComboBox();
+    private final JPanel content = new JPanel();
 
-    private LabeledTextField username = new LabeledTextField("Username");
-    private LabeledPasswordField password = new LabeledPasswordField("Password");
-    private LabeledPasswordField repeatedPassword = new LabeledPasswordField("Repeat Password");
-    private LabeledTextField eMail = new LabeledTextField("EMail");
-    private LabeledTextField schoolClass = new LabeledTextField("Class");
-    private JButton submitButton = new JButton("Submit");
+    private final LabeledTextField username = new LabeledTextField("Username");
+    private final LabeledPasswordField password = new LabeledPasswordField("Password");
+    private final LabeledPasswordField repeatedPassword = new LabeledPasswordField("Repeat Password");
+    private final LabeledTextField eMail = new LabeledTextField("EMail");
+    private final LabeledTextField schoolClass = new LabeledTextField("Class");
+    private final JButton submitButton = new JButton("Submit");
     private boolean isRegistration = false;
 
     private DataService dataService;
@@ -69,10 +69,8 @@ public class LoginPage extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridy = 0;
 
-
         setupComboBox();
         base.add(ComboBox, gbc);
-
 
         gbc.gridy++;
 
@@ -170,33 +168,44 @@ public class LoginPage extends JFrame {
                 User user = dataService.GetUser(username);
                 List<SchoolSubject> schoolSubjects = dataService.GetSchoolSubjectsFromUser(user);
 
-                MainPage mainPage = new MainPage(dataService,user,schoolSubjects);
-                mainPage.pack();
-                mainPage.setVisible(true);
+                OpenMainPage(user, schoolSubjects);
+
                 dispose();
 
             } else if (isRegistration()) {
-                if (dataService.UserExist(username)) {
-                    JOptionPane.showMessageDialog(this, "The Username \"" + username + "\" already Exists!", "Innate Warning", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-                if (dataService.EmailExist(eMail.getText())) {
-                    JOptionPane.showMessageDialog(this, "The EMail \"" + eMail.getText() + "\" already Exists!", "Innate Warning", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-                if (!Objects.equals(password, repeatedPassword)) {
-                    JOptionPane.showMessageDialog(this, "Passwords are not matching!", "Innate Warning", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
+                if (isInvalidCredentials(username, password, repeatedPassword)) return;
                 dataService.CreateUser(new User(username, password, eMail.getText(), new SchoolClass(schoolClass.getText())));
                 SetLogin();
             }
         });
     }
 
+    private boolean isInvalidCredentials(String username, String password, String repeatedPassword) {
+        if (dataService.UserExist(username)) {
+            JOptionPane.showMessageDialog(this, "The Username \"" + username + "\" already Exists!", "Innate Warning", JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        if (dataService.EmailExist(eMail.getText())) {
+            JOptionPane.showMessageDialog(this, "The EMail \"" + eMail.getText() + "\" already Exists!", "Innate Warning", JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        if (!Objects.equals(password, repeatedPassword)) {
+            JOptionPane.showMessageDialog(this, "Passwords are not matching!", "Innate Warning", JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        return false;
+    }
+
+    private void OpenMainPage(User user, List<SchoolSubject> schoolSubjects) {
+        MainPage mainPage = new MainPage(dataService, user, schoolSubjects);
+        mainPage.pack();
+        mainPage.setVisible(true);
+    }
+
     private void SetLogin() {
         ComboBox.setSelectedIndex(0);
     }
+
     private void setRegistration() {
         ComboBox.setSelectedIndex(1);
     }
