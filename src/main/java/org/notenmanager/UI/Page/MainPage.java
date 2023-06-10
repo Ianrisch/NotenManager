@@ -15,7 +15,8 @@ public class MainPage extends JFrame {
     private final JPanel base = new JPanel();
 
     public MainPage(DataService dataService, User user, List<SchoolSubject> schoolSubjects) {
-        super("NotenManager of User: " + user.username);
+        super();
+        updateTitle();
         setLayout(new GridBagLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(400, 600));
