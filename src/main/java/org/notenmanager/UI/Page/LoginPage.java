@@ -168,9 +168,12 @@ public class LoginPage extends JFrame {
                     return;
                 }
                 User user = dataService.GetUser(username);
-                List<SchoolSubject> schoolSubject = dataService.GetSchoolSubjectsFromUser(user);
+                List<SchoolSubject> schoolSubjects = dataService.GetSchoolSubjectsFromUser(user);
 
-                // TODO: Implement UI Switch!!
+                MainPage mainPage = new MainPage(dataService,user,schoolSubjects);
+                mainPage.pack();
+                mainPage.setVisible(true);
+                dispose();
 
             } else if (isRegistration()) {
                 if (dataService.UserExist(username)) {
