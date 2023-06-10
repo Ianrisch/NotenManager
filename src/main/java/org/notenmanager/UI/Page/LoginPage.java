@@ -1,4 +1,4 @@
-package org.notenmanager.UI;
+package org.notenmanager.UI.Page;
 
 import org.notenmanager.Models.SchoolClass;
 import org.notenmanager.Models.SchoolSubject;
@@ -12,7 +12,6 @@ import org.notenmanager.Utils.PasswordService;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.beans.PropertyChangeEvent;
 import java.util.List;
 import java.util.Objects;
 
