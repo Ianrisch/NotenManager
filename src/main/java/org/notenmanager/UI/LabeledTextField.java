@@ -3,7 +3,7 @@ package org.notenmanager.UI;
 import javax.swing.*;
 import java.awt.*;
 
-public class LabeledTextField extends LabeledField implements TextField{
+public class LabeledTextField extends LabeledField implements TextField {
     public JTextField textField = new JTextField();
 
 
@@ -15,8 +15,14 @@ public class LabeledTextField extends LabeledField implements TextField{
         add(textField, gbc);
 
     }
+
     @Override
-    public String getText(){
+    public String getText() {
         return textField.getText();
+    }
+
+    @Override
+    public void clearTextField() {
+        textField.setText("");
     }
 }

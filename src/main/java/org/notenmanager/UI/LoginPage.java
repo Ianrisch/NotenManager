@@ -10,6 +10,7 @@ import org.notenmanager.Utils.PasswordService;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
 import java.util.List;
 import java.util.Objects;
 
@@ -83,30 +84,31 @@ public class LoginPage extends JFrame {
         ComboBox.addActionListener(e -> {
             String selectedItem = (String) ComboBox.getSelectedItem();
 
-            setVisibilities(selectedItem);
+            switch (selectedItem) {
+                case "Login":
+                    onSetLogin();
+                    break;
+                case "Registration":
+                    onSetRegistration();
+                    break;
+                default:
+                    break;
+            }
         });
 
         ComboBox.addItem("Login");
         ComboBox.addItem("Registration");
 
-        setVisibilities(ComboBox.getSelectedItem().toString());
-    }
-
-    private void setVisibilities(String selectedItem) {
-        switch (selectedItem) {
-            case "Login":
-                onSetLogin();
-                break;
-            case "Registration":
-                onSetRegistration();
-                break;
-            default:
-                break;
-        }
+        setRegistration();
+        SetLogin();
     }
 
     public void onSetLogin() {
         isRegistration = false;
+        password.clearTextField();
+        repeatedPassword.clearTextField();
+        eMail.clearTextField();
+        schoolClass.clearTextField();
         setVisibilitiesOfRegistrationComponents(false);
     }
 

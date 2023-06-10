@@ -12,7 +12,7 @@ public class LabeledField extends JPanel {
         setLayout(new GridBagLayout());
         gbc.anchor = GridBagConstraints.NORTHWEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridy=0;
+        gbc.gridy = 0;
 
         this.label.setText(label);
         add(this.label, gbc);
