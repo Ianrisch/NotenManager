@@ -7,14 +7,18 @@ public class LabeledPasswordField extends LabeledField implements TextField {
     public JPasswordField passwordField = new JPasswordField();
 
     public LabeledPasswordField(String label, boolean shouldBeMultiline) {
-        super(label);
+        super(label, shouldBeMultiline);
+
         passwordField.setPreferredSize(new Dimension(250, 30));
-        if (shouldBeMultiline) gbc.gridy++;
         add(passwordField, gbc);
     }
 
-    public LabeledPasswordField(String label) {
-        this(label, true);
+    public LabeledPasswordField() {
+        super();
+    }
+
+    public LabeledPasswordField(boolean shouldBeMultiline) {
+        super(shouldBeMultiline);
     }
 
     @Override

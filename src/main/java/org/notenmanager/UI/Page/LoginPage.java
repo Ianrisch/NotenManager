@@ -5,6 +5,7 @@ import org.notenmanager.Models.SchoolSubject;
 import org.notenmanager.Models.User;
 import org.notenmanager.UI.Compenents.LabledField.LabeledPasswordField;
 import org.notenmanager.UI.Compenents.LabledField.LabeledTextField;
+import org.notenmanager.Utils.Constants.Lang.LanguageConstants;
 import org.notenmanager.Utils.Dataservice.DataService;
 import org.notenmanager.Utils.Dataservice.JsonService;
 import org.notenmanager.Utils.PasswordService;
@@ -16,16 +17,17 @@ import java.util.List;
 import java.util.Objects;
 
 public class LoginPage extends JFrame {
+    private LanguageConstants languageConstants;
     private final JPanel base = new JPanel();
     private final JComboBox ComboBox = new JComboBox();
     private final JPanel content = new JPanel();
 
-    private final LabeledTextField username = new LabeledTextField("Username");
-    private final LabeledPasswordField password = new LabeledPasswordField("Password");
-    private final LabeledPasswordField repeatedPassword = new LabeledPasswordField("Repeat Password");
-    private final LabeledTextField eMail = new LabeledTextField("EMail");
-    private final LabeledTextField schoolClass = new LabeledTextField("Class");
-    private final JButton submitButton = new JButton("Submit");
+    private final LabeledTextField username = new LabeledTextField();
+    private final LabeledPasswordField password = new LabeledPasswordField();
+    private final LabeledPasswordField repeatedPassword = new LabeledPasswordField();
+    private final LabeledTextField eMail = new LabeledTextField();
+    private final LabeledTextField schoolClass = new LabeledTextField();
+    private final JButton submitButton = new JButton();
     private boolean isRegistration = false;
 
     private DataService dataService;
@@ -39,19 +41,20 @@ public class LoginPage extends JFrame {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new LoginPage("loginRegistry");
+        JFrame frame = new LoginPage();
         frame.pack();
         frame.setVisible(true);
     }
 
-    public LoginPage(String title) {
-        super(title);
+    public LoginPage() {
+        super();
         setLayout(new GridBagLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(400, 600));
         setSize(new Dimension(400, 600));
         setResizable(false);
 
+        languageConstants = new LanguageConstants();
         dataService = new JsonService();
 
         createUIComponents();
@@ -61,6 +64,8 @@ public class LoginPage extends JFrame {
     }
 
     private void createUIComponents() {
+        setLabels();
+
         base.setLayout(new GridBagLayout());
         base.setBorder(new EmptyBorder(25, 25, 25, 25));
 
@@ -78,25 +83,29 @@ public class LoginPage extends JFrame {
         base.add(content, gbc);
     }
 
+    private void setLabels() {
+        username.setLabel(languageConstants.Username);
+        password.setLabel(languageConstants.Password);
+        repeatedPassword.setLabel(languageConstants.RepeatedPassword);
+        eMail.setLabel(languageConstants.EMail);
+        schoolClass.setLabel(languageConstants.SchoolClass);
+        submitButton.setLabel(languageConstants.Submit);
+    }
+
     private void setupComboBox() {
         ComboBox.setPreferredSize(new Dimension(150, 30));
         ComboBox.addActionListener(e -> {
             String selectedItem = (String) ComboBox.getSelectedItem();
 
-            switch (selectedItem) {
-                case "Login":
-                    onSetLogin();
-                    break;
-                case "Registration":
-                    onSetRegistration();
-                    break;
-                default:
-                    break;
+            if (selectedItem.equals(languageConstants.Login)) {
+                onSetLogin();
+            } else if (selectedItem.equals(languageConstants.Registration)) {
+                onSetRegistration();
             }
         });
 
-        ComboBox.addItem("Login");
-        ComboBox.addItem("Registration");
+        ComboBox.addItem(languageConstants.Login);
+        ComboBox.addItem(languageConstants.Registration);
 
         setRegistration();
         SetLogin();
@@ -104,6 +113,7 @@ public class LoginPage extends JFrame {
 
     public void onSetLogin() {
         isRegistration = false;
+        setTitle(languageConstants.Login);
         password.clearTextField();
         repeatedPassword.clearTextField();
         eMail.clearTextField();
@@ -113,6 +123,7 @@ public class LoginPage extends JFrame {
 
     public void onSetRegistration() {
         isRegistration = true;
+        setTitle(languageConstants.Registration);
         setVisibilitiesOfRegistrationComponents(true);
     }
 
@@ -182,15 +193,15 @@ public class LoginPage extends JFrame {
 
     private boolean isInvalidCredentials(String username, String password, String repeatedPassword) {
         if (dataService.UserExist(username)) {
-            JOptionPane.showMessageDialog(this, "The Username \"" + username + "\" already Exists!", "Innate Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, languageConstants.UsernameAlreadyExists(username), languageConstants.InnateWarning, JOptionPane.WARNING_MESSAGE);
             return true;
         }
         if (dataService.EmailExist(eMail.getText())) {
-            JOptionPane.showMessageDialog(this, "The EMail \"" + eMail.getText() + "\" already Exists!", "Innate Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, languageConstants.EmailArleadyExists(eMail), languageConstants.InnateWarning, JOptionPane.WARNING_MESSAGE);
             return true;
         }
         if (!Objects.equals(password, repeatedPassword)) {
-            JOptionPane.showMessageDialog(this, "Passwords are not matching!", "Innate Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, languageConstants.PasswordMismatch, languageConstants.InnateWarning, JOptionPane.WARNING_MESSAGE);
             return true;
         }
         return false;

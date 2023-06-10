@@ -8,16 +8,18 @@ public class LabeledTextField extends LabeledField implements TextField {
 
 
     public LabeledTextField(String label, boolean shouldBeMultiline) {
-        super(label);
+        super(label, shouldBeMultiline);
 
         textField.setPreferredSize(new Dimension(250, 30));
-        if (shouldBeMultiline) gbc.gridy++;
         add(textField, gbc);
-
     }
 
-    public LabeledTextField(String label) {
-        this(label, true);
+    public LabeledTextField() {
+        super();
+    }
+
+    public LabeledTextField(boolean shouldBeMultiline) {
+        super(shouldBeMultiline);
     }
 
     @Override
