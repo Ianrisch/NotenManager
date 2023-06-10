@@ -1,4 +1,4 @@
-package org.notenmanager.UI;
+package org.notenmanager.UI.Compenents.LabledField;
 
 import javax.swing.*;
 import java.awt.*;

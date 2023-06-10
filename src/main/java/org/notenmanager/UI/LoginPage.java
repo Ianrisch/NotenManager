@@ -3,6 +3,8 @@ package org.notenmanager.UI;
 import org.notenmanager.Models.SchoolClass;
 import org.notenmanager.Models.SchoolSubject;
 import org.notenmanager.Models.User;
+import org.notenmanager.UI.Compenents.LabledField.LabeledPasswordField;
+import org.notenmanager.UI.Compenents.LabledField.LabeledTextField;
 import org.notenmanager.Utils.Dataservice.DataService;
 import org.notenmanager.Utils.Dataservice.JsonService;
 import org.notenmanager.Utils.PasswordService;

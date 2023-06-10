@@ -1,4 +1,4 @@
-package org.notenmanager.UI;
+package org.notenmanager.UI.Compenents.LabledField;
 
 public interface TextField {
 
