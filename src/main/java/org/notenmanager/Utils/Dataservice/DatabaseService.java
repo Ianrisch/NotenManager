@@ -82,7 +82,12 @@ public class DatabaseService implements DataService {
 
     @Override
     public boolean EmailExist(String email) {
-        throw new RuntimeException("Not Implemented Yet");
+        User user =  CreateSessionAndExecute(session ->
+                session.createQuery(
+                        "from User u where u.mail = '" + email + "'",
+                        User.class).getSingleResult()
+        );
+        return user != null;
     }
 
     @Override
