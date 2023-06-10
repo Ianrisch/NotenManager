@@ -81,6 +81,11 @@ public class DatabaseService implements DataService {
     }
 
     @Override
+    public boolean EmailExist(String email) {
+        throw new RuntimeException("Not Implemented Yet");
+    }
+
+    @Override
     public boolean AuthenticateUser(String username, String password) {
         User user = GetUser(username);
         return user != null ? Objects.equals(user.password, password) : false;

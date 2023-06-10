@@ -3,21 +3,20 @@ package org.notenmanager.UI;
 import javax.swing.*;
 import java.awt.*;
 
-public class LabeledTextField extends JPanel {
-    public JLabel label =new JLabel();
-    public JTextField textField=new JTextField();
+public class LabeledTextField extends LabeledField implements TextField{
+    public JTextField textField = new JTextField();
 
 
+    public LabeledTextField(String label) {
+        super(label);
 
-    public LabeledTextField(String label){
-        super();
-        this.label.setText(label);
-        this.add(this.label);
-        this.add(textField);
+        textField.setPreferredSize(new Dimension(250, 30));
+        gbc.gridy++;
+        add(textField, gbc);
 
     }
-//    @Override
-//    public Dimension getPreferredSize(){
-//        return new Dimension(100,100);
-//    }
+    @Override
+    public String getText(){
+        return textField.getText();
+    }
 }

@@ -15,13 +15,8 @@ public class CreatePasswordFromUserDataTests {
             "mamma,mia,1306fb91fe361e70246bd78fa6601e1a",
             "mamma,mias,ed5580d83456503063c7df635a7fee29",
     })
-    public void Should_Return_Right_Hash(String username, String plainTextPassword,String expected){
-        String result = null;
-        try {
-            result = PasswordService.CreatePasswordFromUserData(username,plainTextPassword);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-        Assertions.assertEquals(expected.toLowerCase(),result.toLowerCase());
+    public void Should_Return_Right_Hash(String username, String plainTextPassword, String expected) {
+        String result =  PasswordService.CreatePasswordFromUserData(username, plainTextPassword);
+        Assertions.assertEquals(expected.toLowerCase(), result.toLowerCase());
     }
 }

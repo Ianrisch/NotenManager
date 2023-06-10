@@ -8,6 +8,7 @@ public interface DataService {
 
     public void CreateUser(User user);
     public boolean UserExist(String username);
+    public boolean EmailExist(String email);
     public boolean AuthenticateUser(String username, String password);
     public User GetUser(String username);
     public void DeleteUser(String username);
