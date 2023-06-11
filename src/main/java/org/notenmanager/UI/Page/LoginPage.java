@@ -197,7 +197,7 @@ public class LoginPage extends JFrame {
             return true;
         }
         if (dataService.EmailExist(eMail.getText())) {
-            JOptionPane.showMessageDialog(this, languageConstants.EmailArleadyExists(eMail), languageConstants.InnateWarning, JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, languageConstants.EmailAlreadyExists(eMail.getText()), languageConstants.InnateWarning, JOptionPane.WARNING_MESSAGE);
             return true;
         }
         if (!Objects.equals(password, repeatedPassword)) {
@@ -208,7 +208,7 @@ public class LoginPage extends JFrame {
     }
 
     private void OpenMainPage(User user, List<SchoolSubject> schoolSubjects) {
-        MainPage mainPage = new MainPage(dataService, user, schoolSubjects);
+        MainPage mainPage = new MainPage(dataService, user, schoolSubjects,languageConstants);
         mainPage.pack();
         mainPage.setVisible(true);
     }

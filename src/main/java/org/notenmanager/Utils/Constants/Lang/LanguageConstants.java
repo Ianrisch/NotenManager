@@ -1,7 +1,5 @@
 package org.notenmanager.Utils.Constants.Lang;
 
-import org.notenmanager.UI.Compenents.LabledField.LabeledTextField;
-
 public class LanguageConstants {
 
     public String Login;
@@ -15,6 +13,8 @@ public class LanguageConstants {
     public String Submit;
     public String PasswordMismatch;
     public String InnateWarning;
+    public String Teacher;
+    public String Subject;
 
     public LanguageConstants() {
         Login = "Login";
@@ -27,13 +27,15 @@ public class LanguageConstants {
         Submit = "Submit";
         PasswordMismatch = "Passwords are not matching!";
         InnateWarning = "Innate Warning";
+        Teacher = "Teacher";
+        Subject = "Subject";
     }
 
     public String UsernameAlreadyExists(String username) {
        return  "The Username \"" + username + "\" already Exists!";
     }
 
-    public String EmailArleadyExists(LabeledTextField eMail) {
-        return "The EMail \"" + eMail.getText() + "\" already Exists!";
+    public String EmailAlreadyExists(String eMail) {
+        return "The EMail \"" + eMail + "\" already Exists!";
     }
 }

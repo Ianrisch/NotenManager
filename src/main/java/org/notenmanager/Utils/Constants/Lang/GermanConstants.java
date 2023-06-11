@@ -1,10 +1,9 @@
 package org.notenmanager.Utils.Constants.Lang;
 
-import org.notenmanager.UI.Compenents.LabledField.LabeledTextField;
-
 public class GermanConstants extends LanguageConstants  {
 
     public GermanConstants(){
+        super();
         Login = "Anmelden";
         Registration = "Registrieren";
         EMail = "Email";
@@ -15,6 +14,8 @@ public class GermanConstants extends LanguageConstants  {
         Submit = "Bestätigen";
         PasswordMismatch = "Die Passwörter stimmen nicht Überein!";
         InnateWarning = "Warnung";
+        Teacher = "Lehrer";
+        Subject = "Fach";
     }
 
     @Override
@@ -22,7 +23,7 @@ public class GermanConstants extends LanguageConstants  {
         return  "Der Nutzername \"" + username + "\" existiert bereits!";
     }
     @Override
-    public String EmailArleadyExists(LabeledTextField eMail) {
-        return "Die EMail \"" + eMail.getText() + "\" existiert bereits!";
+    public String EmailAlreadyExists(String eMail) {
+        return "Die EMail \"" + eMail + "\" existiert bereits!";
     }
 }
