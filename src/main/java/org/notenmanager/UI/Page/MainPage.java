@@ -16,16 +16,18 @@ import java.util.List;
 public class MainPage extends JFrame {
     private final DataService dataService;
     private User user;
-    private LabeledComboBoxField schoolSubject =new LabeledComboBoxField(false);
+    private LabeledComboBoxField schoolSubject = new LabeledComboBoxField(false);
 
-    private LabeledText teacher=new LabeledText(false);
-    private LabeledText schoolClass =new LabeledText(false);
-    private JScrollPane scrollPane=new JScrollPane();
+    private LabeledText teacher = new LabeledText(false);
+    private LabeledText schoolClass = new LabeledText(false);
+    private JScrollPane scrollPane ;
     private List<SchoolSubject> schoolSubjects;
     private final JPanel base = new JPanel();
 
     private LanguageConstants languageConstants;
-    public MainPage(DataService dataService, User user, List<SchoolSubject> schoolSubjects,LanguageConstants languageConstants) {
+    private JPanel gradePanel=new JPanel();
+
+    public MainPage(DataService dataService, User user, List<SchoolSubject> schoolSubjects, LanguageConstants languageConstants) {
         super();
         setLayout(new GridBagLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,26 +45,34 @@ public class MainPage extends JFrame {
         setContentPane(base);
 
     }
-    private void setupComboBox(){
-        for(SchoolSubject sb:schoolSubjects){
+    private void setupComboBox() {
+        for (SchoolSubject sb : schoolSubjects) {
             schoolSubject.comboBox.addItem(sb.name);
         }
         schoolSubject.comboBox.addActionListener(e -> {
             String selectedItem = (String) schoolSubject.comboBox.getSelectedItem();
+            GridBagConstraints gbc =new GridBagConstraints();
+            gbc.gridy=0;
+            gradePanel.removeAll();
             for (SchoolSubject sa : schoolSubjects) {
                 if (sa.name == selectedItem) {
-                    for(Grade grade:sa.grades){
-                        scrollPane.add(new JLabel("Grade: " + grade.value + " Gravity: " + grade.gravity));
+                    for (Grade grade : sa.grades) {
+                        gradePanel.add(new JLabel("Grade: " + grade.value + " Gravity: " + grade.gravity),gbc);
+                        gbc.gridy++;
+                        revalidate();
                     }
+                    break;
                 }
             }
         });
     }
-    private void setLabels(){
+
+    private void setLabels() {
         teacher.setLabel(languageConstants.Teacher);
         schoolClass.setLabel(languageConstants.SchoolClass);
         schoolSubject.setLabel(languageConstants.Subject);
     }
+
     public void updateTitle() {
         setTitle(getNewTitle());
     }
@@ -73,7 +83,9 @@ public class MainPage extends JFrame {
 
     private void createUIComponents() {
         base.setLayout(new GridBagLayout());
-        base.setBorder(new EmptyBorder(25,25,25,25));
+        base.setBorder(new EmptyBorder(25, 25, 25, 25));
+        gradePanel.setLayout(new GridBagLayout());
+        scrollPane= new JScrollPane(gradePanel);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.NORTHWEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -86,7 +98,9 @@ public class MainPage extends JFrame {
         gbc.gridy++;
         base.add(schoolClass, gbc);
         gbc.gridy++;
-
+        scrollPane.setPreferredSize(new Dimension(400, 400));
+        base.add(scrollPane, gbc);
+        gbc.gridy++;
         setupComboBox();
         base.add(schoolSubject, gbc);
         gbc.gridy++;

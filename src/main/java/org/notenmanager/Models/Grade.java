@@ -22,7 +22,7 @@ public class Grade {
     }
 
     @JsonCreator
-    private static Grade createGrade(@JsonProperty("value") float value, @JsonProperty("gravity") float gravity) {
+    private static Grade createGrade(@JsonProperty("value") float value, @JsonProperty("gravity") double gravity) {
         return new Grade(value, gravity);
     }
 
