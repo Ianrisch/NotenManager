@@ -10,13 +10,20 @@ public class Lable extends JPanel {
     public Lable(String label, boolean shouldBeMultiline) {
         super();
         setLayout(new GridBagLayout());
-        gbc.anchor = GridBagConstraints.NORTHWEST;
+        gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridy = 0;
         gbc.gridx = 0;
 
+        if (shouldBeMultiline) gbc.ipady = 10;
+        else gbc.ipadx = 10;
         this.label.setText(label);
         add(this.label, gbc);
+
+        gbc.ipady = 0;
+        gbc.ipadx = 0;
+
+        gbc.anchor = GridBagConstraints.WEST;
 
         if (shouldBeMultiline) gbc.gridy++;
         else gbc.gridx++;

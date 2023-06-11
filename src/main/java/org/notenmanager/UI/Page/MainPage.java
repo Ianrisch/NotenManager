@@ -5,7 +5,6 @@ import org.notenmanager.Models.SchoolSubject;
 import org.notenmanager.Models.User;
 import org.notenmanager.UI.Compenents.LabledField.LabeledComboBoxField;
 import org.notenmanager.UI.Compenents.LabledField.LabeledText;
-import org.notenmanager.UI.Compenents.LabledField.LabeledTextField;
 import org.notenmanager.Utils.Constants.Lang.LanguageConstants;
 import org.notenmanager.Utils.Dataservice.DataService;
 
@@ -39,7 +38,6 @@ public class MainPage extends JFrame {
         this.schoolSubjects = schoolSubjects;
         this.languageConstants = languageConstants;
 
-        setupComboBox();
         createUIComponents();
 
         setContentPane(base);
@@ -54,7 +52,7 @@ public class MainPage extends JFrame {
             for (SchoolSubject sa : schoolSubjects) {
                 if (sa.name == selectedItem) {
                     for(Grade grade:sa.grades){
-                        scrollPane.add(new JLabel("Grade:"+grade.value+" Gravity:"+grade.gravity));
+                        scrollPane.add(new JLabel("Grade: " + grade.value + " Gravity: " + grade.gravity));
                     }
                 }
             }
@@ -82,10 +80,14 @@ public class MainPage extends JFrame {
         gbc.gridy = 0;
         gbc.ipady = 20;
 
+        setLabels();
+
         base.add(teacher, gbc);
         gbc.gridy++;
         base.add(schoolClass, gbc);
         gbc.gridy++;
+
+        setupComboBox();
         base.add(schoolSubject, gbc);
         gbc.gridy++;
     }

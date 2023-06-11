@@ -7,21 +7,21 @@ public class LabeledComboBoxField extends Lable {
     public JComboBox comboBox = new JComboBox();
 
     public LabeledComboBoxField(String label, boolean shouldBeMultiline) {
-        super(label);
+        super(label, shouldBeMultiline);
 
         comboBox.setPreferredSize(new Dimension(250, 30));
         add(comboBox, gbc);
     }
 
     public LabeledComboBoxField(String label) {
-        super(label);
+        this(label, true);
     }
 
     public LabeledComboBoxField() {
-        super();
+        this("");
     }
 
     public LabeledComboBoxField(boolean shouldBeMultiline) {
-        super(shouldBeMultiline);
+        this("", shouldBeMultiline);
     }
 }
