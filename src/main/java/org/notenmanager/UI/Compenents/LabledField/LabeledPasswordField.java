@@ -3,7 +3,7 @@ package org.notenmanager.UI.Compenents.LabledField;
 import javax.swing.*;
 import java.awt.*;
 
-public class LabeledPasswordField extends LabeledField implements TextField {
+public class LabeledPasswordField extends Lable implements TextField {
     public JPasswordField passwordField = new JPasswordField();
 
     public LabeledPasswordField(String label, boolean shouldBeMultiline) {

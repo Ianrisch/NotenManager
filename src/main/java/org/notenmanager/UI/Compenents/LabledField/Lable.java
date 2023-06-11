@@ -3,11 +3,11 @@ package org.notenmanager.UI.Compenents.LabledField;
 import javax.swing.*;
 import java.awt.*;
 
-public class LabeledField extends JPanel {
+public class Lable extends JPanel {
     public JLabel label = new JLabel();
     protected GridBagConstraints gbc = new GridBagConstraints();
 
-    public LabeledField(String label, boolean shouldBeMultiline) {
+    public Lable(String label, boolean shouldBeMultiline) {
         super();
         setLayout(new GridBagLayout());
         gbc.anchor = GridBagConstraints.NORTHWEST;
@@ -22,15 +22,15 @@ public class LabeledField extends JPanel {
         else gbc.gridx++;
     }
 
-    public LabeledField(boolean shouldBeMultiline) {
+    public Lable(boolean shouldBeMultiline) {
         this("", shouldBeMultiline);
     }
 
-    public LabeledField(String label) {
+    public Lable(String label) {
         this(label, true);
     }
 
-    public LabeledField() {
+    public Lable() {
         this("");
     }
 

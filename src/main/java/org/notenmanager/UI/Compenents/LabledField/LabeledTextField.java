@@ -3,7 +3,7 @@ package org.notenmanager.UI.Compenents.LabledField;
 import javax.swing.*;
 import java.awt.*;
 
-public class LabeledTextField extends LabeledField implements TextField {
+public class LabeledTextField extends Lable implements TextField {
     public JTextField textField = new JTextField();
 
 
