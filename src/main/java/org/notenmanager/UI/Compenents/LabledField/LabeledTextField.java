@@ -11,15 +11,16 @@ public class LabeledTextField extends Lable implements TextField {
         super(label, shouldBeMultiline);
 
         textField.setPreferredSize(new Dimension(250, 30));
-        add(textField, gbc);
+        this.add(textField, gbc);
     }
 
     public LabeledTextField() {
-        super();
+        this("");;
+    }public LabeledTextField(String label) {
+        this(label , true);;
     }
-
     public LabeledTextField(boolean shouldBeMultiline) {
-        super(shouldBeMultiline);
+        this("",shouldBeMultiline);;
     }
 
     @Override

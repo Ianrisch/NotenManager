@@ -14,11 +14,15 @@ public class LabeledPasswordField extends Lable implements TextField {
     }
 
     public LabeledPasswordField() {
-        super();
+        this("");
+    }
+
+    public LabeledPasswordField(String label) {
+        this(label, true);
     }
 
     public LabeledPasswordField(boolean shouldBeMultiline) {
-        super(shouldBeMultiline);
+        this("", shouldBeMultiline);
     }
 
     @Override
