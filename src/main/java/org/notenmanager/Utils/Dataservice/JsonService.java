@@ -145,8 +145,8 @@ public class JsonService implements DataService {
     }
 
     @Override
-    public void CreateSchoolSubjectForUser(User user, String schoolSubjectName, Person teacher, List<Grade> grades) {
-        subjects.add(new SchoolSubject(teacher, schoolSubjectName, grades));
+    public void CreateSchoolSubjectForUser(User user, SchoolSubject schoolSubject) {
+        subjects.add(schoolSubject);
         WriteToFile(subjects, getSchoolSubjectListPath(user.username));
     }
 

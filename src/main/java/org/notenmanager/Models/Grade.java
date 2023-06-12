@@ -10,10 +10,10 @@ public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    public float value;
+    public double value;
     public double gravity;
 
-    public Grade(float value, double gravity) {
+    public Grade(double value, double gravity) {
         this.value = value;
         this.gravity = gravity;
     }
@@ -21,8 +21,13 @@ public class Grade {
     public Grade() {
     }
 
+    @Override
+    public String toString() {
+        return "Grade: " + value + " Gravity: " + gravity;
+    }
+
     @JsonCreator
-    private static Grade createGrade(@JsonProperty("value") float value, @JsonProperty("gravity") double gravity) {
+    private static Grade createGrade(@JsonProperty("value") double value, @JsonProperty("gravity") double gravity) {
         return new Grade(value, gravity);
     }
 
@@ -30,8 +35,9 @@ public class Grade {
      * Only for DB pls ignore!!
      */
     @ManyToOne
-    @JoinColumn(name = "subject_id",nullable = false)
+    @JoinColumn(name = "subject_id", nullable = false)
     private SchoolSubject subject;
+
     public void addRelationPartner(SchoolSubject subject) {
         this.subject = subject;
     }

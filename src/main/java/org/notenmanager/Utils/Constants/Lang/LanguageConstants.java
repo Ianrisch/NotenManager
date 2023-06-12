@@ -1,5 +1,7 @@
 package org.notenmanager.Utils.Constants.Lang;
 
+import org.notenmanager.Models.Grade;
+
 public class LanguageConstants {
 
     public String Login;
@@ -15,6 +17,14 @@ public class LanguageConstants {
     public String InnateWarning;
     public String Teacher;
     public String Subject;
+    public String Empty;
+    public String AddGrade;
+    public String RemoveGrade;
+    public String AddSubject;
+    public String RemoveSubject;
+    public String Grade;
+    public String Gravity;
+    public String SubjectName;
 
     public LanguageConstants() {
         Login = "Login";
@@ -29,10 +39,19 @@ public class LanguageConstants {
         InnateWarning = "Innate Warning";
         Teacher = "Teacher";
         Subject = "Subject";
+        Empty = "List is Empty Add new Item!";
+        AddGrade = "Add Grade";
+        RemoveGrade = "Remove Grade/s";
+        AddSubject = "Add Subject";
+        RemoveSubject = "Remove Subject";
+        Grade = "Grade: ";
+        Gravity = "Gravity: ";
+        SubjectName = "Subject Name: ";
+
     }
 
     public String UsernameAlreadyExists(String username) {
-       return  "The Username \"" + username + "\" already Exists!";
+        return "The Username \"" + username + "\" already Exists!";
     }
 
     public String EmailAlreadyExists(String eMail) {

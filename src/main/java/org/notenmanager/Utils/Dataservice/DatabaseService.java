@@ -137,7 +137,7 @@ public class DatabaseService implements DataService {
     }
 
     @Override
-    public void CreateSchoolSubjectForUser(User user, String schoolSubjectName, Person teacher, List<Grade> grades) {
+    public void CreateSchoolSubjectForUser(User user, SchoolSubject schoolSubject) {
 
     }
 
