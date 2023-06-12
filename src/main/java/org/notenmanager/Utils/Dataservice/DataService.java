@@ -1,7 +1,5 @@
 package org.notenmanager.Utils.Dataservice;
 
-import org.notenmanager.Models.Grade;
-import org.notenmanager.Models.Person;
 import org.notenmanager.Models.SchoolSubject;
 import org.notenmanager.Models.User;
 

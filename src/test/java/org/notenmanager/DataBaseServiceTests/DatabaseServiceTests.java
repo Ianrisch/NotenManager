@@ -13,23 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class DatabaseServiceTests {
-
-    public DatabaseServiceTests() {
-        setUp();
-        sut = new DatabaseService(sessionFactory);
-    }
 
     public SessionFactory sessionFactory;
     protected Person person = new Person("Kek", "dietrich");
     protected List<Grade> grades = new ArrayList();
     protected SchoolSubject subject = new SchoolSubject(person, "LF5", grades);
-
     protected SchoolClass classe = new SchoolClass("Someclass");
     protected User existentUser = new User("thunfischeis", "securepaswd", "mail@trash.internet", classe);
     protected DatabaseService sut;
 
+    public DatabaseServiceTests() {
+        setUp();
+        sut = new DatabaseService(sessionFactory);
+    }
 
     public void setUp() {
         // A SessionFactory is set up once for an application!

@@ -8,13 +8,13 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.notenmanager.Exceptions.AlreadyExistsException;
 import org.notenmanager.Exceptions.UserAlreadyExistsException;
-import org.notenmanager.Models.*;
+import org.notenmanager.Models.SchoolClass;
+import org.notenmanager.Models.SchoolSubject;
+import org.notenmanager.Models.User;
 import org.notenmanager.Utils.Consumer.IOConsumer;
 
 import java.util.List;
 import java.util.Objects;
-import org.hibernate.boot.MetadataSources;
-import org.notenmanager.Models.*;
 
 public class DatabaseService implements DataService {
     private SessionFactory sessionFactory;
@@ -82,7 +82,7 @@ public class DatabaseService implements DataService {
 
     @Override
     public boolean EmailExist(String email) {
-        User user =  CreateSessionAndExecute(session ->
+        User user = CreateSessionAndExecute(session ->
                 session.createQuery(
                         "from User u where u.mail = '" + email + "'",
                         User.class).getSingleResult()
@@ -116,7 +116,8 @@ public class DatabaseService implements DataService {
 
     @Override
     public List<SchoolSubject> GetSchoolSubjectsFromUser(User user) {
-    return null;}
+        return null;
+    }
 
     private <Output> Output CreateSessionAndExecute(IOConsumer<Session, Output> consumer) {
         Output output = null;

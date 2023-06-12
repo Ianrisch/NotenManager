@@ -5,8 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.notenmanager.Utils.PasswordService;
 
-import java.security.NoSuchAlgorithmException;
-
 public class CreatePasswordFromUserDataTests {
     @ParameterizedTest
     @CsvSource({
@@ -16,7 +14,7 @@ public class CreatePasswordFromUserDataTests {
             "mamma,mias,ed5580d83456503063c7df635a7fee29",
     })
     public void Should_Return_Right_Hash(String username, String plainTextPassword, String expected) {
-        String result =  PasswordService.CreatePasswordFromUserData(username, plainTextPassword);
+        String result = PasswordService.CreatePasswordFromUserData(username, plainTextPassword);
         Assertions.assertEquals(expected.toLowerCase(), result.toLowerCase());
     }
 }

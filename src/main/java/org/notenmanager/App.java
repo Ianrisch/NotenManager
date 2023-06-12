@@ -1,10 +1,5 @@
 package org.notenmanager;
 
-import org.notenmanager.Models.SchoolSubject;
-import org.notenmanager.Utils.AverageCalculation;
-
-import java.util.List;
-
 /**
  * Hello world!
  */

@@ -7,11 +7,21 @@ import org.notenmanager.Models.SchoolSubject;
 public class AverageCalculation {
     public static double average(SchoolSubject subject) {
         double allGradesAdded = 0;
-        for(Grade grade : subject.grades) {
+        for (Grade grade : subject.grades) {
             allGradesAdded += grade.value;
         }
         long gradeCount = subject.grades.size();
-        double average = allGradesAdded/gradeCount;
+        double average = allGradesAdded / gradeCount;
+        return average;
+    }
+
+    public static double averageWithGravity(SchoolSubject subject) {
+        double allGradesAdded = 0;
+        for (Grade grade : subject.grades) {
+            allGradesAdded += grade.value * grade.gravity;
+        }
+        long gradeCount = subject.grades.size();
+        double average = allGradesAdded / gradeCount;
         return average;
     }
 }

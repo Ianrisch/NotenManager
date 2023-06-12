@@ -1,8 +1,8 @@
 package org.notenmanager.Utils.Constants.Lang;
 
-public class GermanConstants extends LanguageConstants  {
+public class GermanConstants extends LanguageConstants {
 
-    public GermanConstants(){
+    public GermanConstants() {
         super();
         Login = "Anmelden";
         Registration = "Registrieren";
@@ -23,12 +23,23 @@ public class GermanConstants extends LanguageConstants  {
         RemoveSubject = "Klasse entfernen";
         Grade = "Note: ";
         Gravity = "Gewichtung: ";
+        Back = "Zurück";
+        Average = "Durchschnitt: ";
+        AverageWithGravity = "Durchschnitt mit Notengewichtung: ";
+        PickALanguage = "Wähle eine Sprache: ";
+
+    }
+
+    @Override
+    public String NotenManagerTitle(String username) {
+        return "NotenManager von Nutzer: " + username;
     }
 
     @Override
     public String UsernameAlreadyExists(String username) {
-        return  "Der Nutzername \"" + username + "\" existiert bereits!";
+        return "Der Nutzername \"" + username + "\" existiert bereits!";
     }
+
     @Override
     public String EmailAlreadyExists(String eMail) {
         return "Die EMail \"" + eMail + "\" existiert bereits!";

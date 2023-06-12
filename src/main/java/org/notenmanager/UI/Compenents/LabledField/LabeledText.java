@@ -6,22 +6,26 @@ import java.awt.*;
 public class LabeledText extends Lable {
     public JLabel text = new JLabel();
 
-    public LabeledText(String label, boolean shouldBeMultiline){
+    public LabeledText(String label, boolean shouldBeMultiline) {
         super(label, shouldBeMultiline);
 
         text.setPreferredSize(new Dimension(100, 30));
         add(text, gbc);
     }
-    public LabeledText( boolean shouldBeMultiline){
+
+    public LabeledText(boolean shouldBeMultiline) {
         this("", shouldBeMultiline);
     }
-    public LabeledText(String label){
+
+    public LabeledText(String label) {
         this(label, true);
     }
-    public LabeledText(){
+
+    public LabeledText() {
         this("");
     }
-    public void setText(String text){
+
+    public void setText(String text) {
         this.text.setText(text);
     }
 }

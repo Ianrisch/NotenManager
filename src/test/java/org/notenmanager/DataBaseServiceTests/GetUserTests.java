@@ -1,6 +1,5 @@
 package org.notenmanager.DataBaseServiceTests;
 
-import jakarta.persistence.Column;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.notenmanager.Models.User;

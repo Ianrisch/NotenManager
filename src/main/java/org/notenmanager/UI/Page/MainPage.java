@@ -6,13 +6,16 @@ import org.notenmanager.Models.User;
 import org.notenmanager.UI.Compenents.LabledField.LabeledComboBoxField;
 import org.notenmanager.UI.Compenents.LabledField.LabeledText;
 import org.notenmanager.UI.Popups.MultipleOptionDialog;
+import org.notenmanager.Utils.AverageCalculation;
 import org.notenmanager.Utils.Constants.Lang.LanguageConstants;
+import org.notenmanager.Utils.Constants.Lang.Languages;
 import org.notenmanager.Utils.Dataservice.DataService;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -23,29 +26,34 @@ public class MainPage extends JFrame {
 
     private final LabeledText teacher = new LabeledText(false);
     private final LabeledText schoolClass = new LabeledText(false);
+    private final LabeledText average = new LabeledText(false);
+    private final LabeledText averageWithGravity = new LabeledText(false);
     private final JButton addGrade = new JButton();
     private final JButton removeGrade = new JButton();
-    private JButton addSubject = new JButton();
-    private JButton removeSubject = new JButton();
-    private List<SchoolSubject> schoolSubjects;
     private final JPanel base = new JPanel();
+    private final DefaultListModel<String> gradeListModel = new DefaultListModel();
+    private final JButton addSubject = new JButton();
+    private final JButton removeSubject = new JButton();
+    private final JButton backButton = new JButton();
+    private List<SchoolSubject> schoolSubjects;
     private LanguageConstants languageConstants;
     private JList gradeList;
-    private final DefaultListModel<String> gradeListModel = new DefaultListModel();
     private JScrollPane scrollPane;
+    private LabeledComboBoxField languagePicker = new LabeledComboBoxField(false);
 
     public MainPage(DataService dataService, User user, List<SchoolSubject> schoolSubjects, LanguageConstants languageConstants) {
         super();
         setLayout(new GridBagLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(1350, 500));
-        setPreferredSize(new Dimension(1350, 500));
+        setMinimumSize(new Dimension(950, 500));
+        setPreferredSize(new Dimension(950, 500));
 
         this.dataService = dataService;
+        this.languageConstants = languageConstants;
         this.user = user;
         updateTitle();
         this.schoolSubjects = schoolSubjects;
-        this.languageConstants = languageConstants;
+
 
         createUIComponents();
 
@@ -68,10 +76,19 @@ public class MainPage extends JFrame {
         schoolSubjectComboBox.comboBox.addActionListener(e -> {
             schoolClass.setText(user.schoolClass.name);
             SetGradeList();
+            UpdateAverage();
         });
 
-        if ( schoolSubjectComboBox.comboBox.getItemCount() != 0) schoolSubjectComboBox.comboBox.setSelectedIndex(0);
+        if (schoolSubjectComboBox.comboBox.getItemCount() != 0) schoolSubjectComboBox.comboBox.setSelectedIndex(0);
         revalidate();
+    }
+
+    private void UpdateAverage() {
+        RunOnCurrentSchoolSubject(schoolSubject -> {
+            DecimalFormat df = new DecimalFormat("#.##");
+            average.setText(df.format(AverageCalculation.average(schoolSubject)));
+            averageWithGravity.setText(df.format(AverageCalculation.averageWithGravity(schoolSubject)));
+        });
     }
 
     private void refillComboBox() {
@@ -88,7 +105,7 @@ public class MainPage extends JFrame {
         gradeListModel.removeAllElements();
 
         for (SchoolSubject schoolSubject : schoolSubjects) {
-            if (schoolSubject.name == selectedItem) {
+            if (schoolSubject.name.equals(selectedItem)) {
 
                 setTeacherName(schoolSubject);
 
@@ -123,19 +140,19 @@ public class MainPage extends JFrame {
     private void setLabels() {
         teacher.setLabel(languageConstants.Teacher);
         schoolClass.setLabel(languageConstants.SchoolClass);
+        average.setLabel(languageConstants.Average);
+        averageWithGravity.setLabel(languageConstants.AverageWithGravity);
+        languagePicker.setLabel(languageConstants.PickALanguage);
         schoolSubjectComboBox.setLabel(languageConstants.Subject);
         addGrade.setText(languageConstants.AddGrade);
         removeGrade.setText(languageConstants.RemoveGrade);
         addSubject.setText(languageConstants.AddSubject);
         removeSubject.setText(languageConstants.RemoveSubject);
+        backButton.setText(languageConstants.Back);
     }
 
     public void updateTitle() {
-        setTitle(getNewTitle());
-    }
-
-    private String getNewTitle() {
-        return "NotenManager of User: " + user.username;
+        setTitle(languageConstants.NotenManagerTitle(user.username));
     }
 
     private void createUIComponents() {
@@ -150,6 +167,13 @@ public class MainPage extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weighty = 0;
         gbc.insets = new Insets(5, 5, 5, 5);
+
+        base.add(backButton, gbc);
+        gbc.gridx = 4;
+        Languages.setupLanguagePicker(languagePicker, a -> OnPickLanguage(a));
+        base.add(languagePicker, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
 
         setLabels();
 
@@ -184,6 +208,10 @@ public class MainPage extends JFrame {
 
         gbc.gridx++;
         base.add(removeGrade, gbc);
+        gbc.gridx++;
+        base.add(average, gbc);
+        gbc.gridx++;
+        base.add(averageWithGravity, gbc);
     }
 
     private void AddActionListeners() {
@@ -191,6 +219,23 @@ public class MainPage extends JFrame {
         removeGrade.addActionListener(a -> OnRemoveGrade(a));
         addSubject.addActionListener(a -> OnAddSubject(a));
         removeSubject.addActionListener(a -> OnRemoveSubject(a));
+        backButton.addActionListener(a -> OnBack(a));
+    }
+
+    private void OnPickLanguage(ActionEvent a) {
+        languageConstants = Languages.PickLanguage(languagePicker.getSelectedItem());
+        setLabels();
+    }
+
+    private void OnBack(ActionEvent a) {
+        OpenLoginPage();
+        this.dispose();
+    }
+
+    private void OpenLoginPage() {
+        LoginPage loginPage = new LoginPage(dataService, languagePicker.getSelectedItem());
+        loginPage.pack();
+        loginPage.setVisible(true);
     }
 
     private void OnRemoveSubject(ActionEvent a) {
@@ -208,7 +253,7 @@ public class MainPage extends JFrame {
                 this,
                 languageConstants.AddSubject,
                 languageConstants.SubjectName,
-                languageConstants.Teacher + ": "
+                languageConstants.Teacher
         );
 
         if (schoolSubject == null) return;
@@ -255,9 +300,10 @@ public class MainPage extends JFrame {
         String selectedSchoolSubject = schoolSubjectComboBox.getSelectedItem();
 
         for (SchoolSubject schoolSubject : schoolSubjects) {
-            if (schoolSubject.name == selectedSchoolSubject)
+            if (schoolSubject.name.equals(selectedSchoolSubject)) {
                 consumer.accept(schoolSubject);
-            break;
+                break;
+            }
         }
     }
 

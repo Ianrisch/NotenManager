@@ -15,12 +15,18 @@ public class LabeledTextField extends Lable implements TextField {
     }
 
     public LabeledTextField() {
-        this("");;
-    }public LabeledTextField(String label) {
-        this(label , true);;
+        this("");
+        ;
     }
+
+    public LabeledTextField(String label) {
+        this(label, true);
+        ;
+    }
+
     public LabeledTextField(boolean shouldBeMultiline) {
-        this("",shouldBeMultiline);;
+        this("", shouldBeMultiline);
+        ;
     }
 
     @Override

@@ -7,11 +7,17 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Grades")
 public class Grade {
+    public double value;
+    public double gravity;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    public double value;
-    public double gravity;
+    /**
+     * Only for DB pls ignore!!
+     */
+    @ManyToOne
+    @JoinColumn(name = "subject_id", nullable = false)
+    private SchoolSubject subject;
 
     public Grade(double value, double gravity) {
         this.value = value;
@@ -21,22 +27,15 @@ public class Grade {
     public Grade() {
     }
 
-    @Override
-    public String toString() {
-        return "Grade: " + value + " Gravity: " + gravity;
-    }
-
     @JsonCreator
     private static Grade createGrade(@JsonProperty("value") double value, @JsonProperty("gravity") double gravity) {
         return new Grade(value, gravity);
     }
 
-    /**
-     * Only for DB pls ignore!!
-     */
-    @ManyToOne
-    @JoinColumn(name = "subject_id", nullable = false)
-    private SchoolSubject subject;
+    @Override
+    public String toString() {
+        return "Grade: " + value + " Gravity: " + gravity;
+    }
 
     public void addRelationPartner(SchoolSubject subject) {
         this.subject = subject;

@@ -27,7 +27,7 @@ public interface IOConsumer<Input, Output> {
         Objects.requireNonNull(after);
         return (Input t) -> {
             accept(t);
-            return  after.accept(t);
+            return after.accept(t);
         };
     }
 }

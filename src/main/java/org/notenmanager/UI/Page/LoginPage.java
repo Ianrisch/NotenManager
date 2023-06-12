@@ -3,9 +3,11 @@ package org.notenmanager.UI.Page;
 import org.notenmanager.Models.SchoolClass;
 import org.notenmanager.Models.SchoolSubject;
 import org.notenmanager.Models.User;
+import org.notenmanager.UI.Compenents.LabledField.LabeledComboBoxField;
 import org.notenmanager.UI.Compenents.LabledField.LabeledPasswordField;
 import org.notenmanager.UI.Compenents.LabledField.LabeledTextField;
 import org.notenmanager.Utils.Constants.Lang.LanguageConstants;
+import org.notenmanager.Utils.Constants.Lang.Languages;
 import org.notenmanager.Utils.Dataservice.DataService;
 import org.notenmanager.Utils.Dataservice.JsonService;
 import org.notenmanager.Utils.PasswordService;
@@ -13,37 +15,30 @@ import org.notenmanager.Utils.PasswordService;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.List;
 import java.util.Objects;
 
 public class LoginPage extends JFrame {
-    private LanguageConstants languageConstants;
     private final JPanel base = new JPanel();
     private final JComboBox ComboBox = new JComboBox();
     private final JPanel content = new JPanel();
-
     private final LabeledTextField username = new LabeledTextField();
     private final LabeledPasswordField password = new LabeledPasswordField();
     private final LabeledPasswordField repeatedPassword = new LabeledPasswordField();
     private final LabeledTextField eMail = new LabeledTextField();
     private final LabeledTextField schoolClass = new LabeledTextField();
     private final JButton submitButton = new JButton();
+    private LanguageConstants languageConstants;
+    private LabeledComboBoxField languagePicker = new LabeledComboBoxField(false);
     private boolean isRegistration = false;
 
     private DataService dataService;
 
-    public boolean isLogin() {
-        return !isRegistration();
-    }
-
-    public boolean isRegistration() {
-        return isRegistration;
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new LoginPage();
-        frame.pack();
-        frame.setVisible(true);
+    public LoginPage(DataService dataService, String language) {
+        this();
+        this.dataService = dataService;
+        this.languageConstants = Languages.PickLanguage(language);
     }
 
     public LoginPage() {
@@ -63,6 +58,20 @@ public class LoginPage extends JFrame {
 
     }
 
+    public static void main(String[] args) {
+        JFrame frame = new LoginPage();
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    public boolean isLogin() {
+        return !isRegistration();
+    }
+
+    public boolean isRegistration() {
+        return isRegistration;
+    }
+
     private void createUIComponents() {
         setLabels();
 
@@ -74,6 +83,10 @@ public class LoginPage extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridy = 0;
 
+        Languages.setupLanguagePicker(languagePicker, a -> OnPickLanguage(a));
+        base.add(languagePicker, gbc);
+
+        gbc.gridy++;
         setupComboBox();
         base.add(ComboBox, gbc);
 
@@ -83,6 +96,11 @@ public class LoginPage extends JFrame {
         base.add(content, gbc);
     }
 
+    private void OnPickLanguage(ActionEvent a) {
+        languageConstants = Languages.PickLanguage(languagePicker.getSelectedItem());
+        setLabels();
+    }
+
     private void setLabels() {
         username.setLabel(languageConstants.Username);
         password.setLabel(languageConstants.Password);
@@ -90,6 +108,10 @@ public class LoginPage extends JFrame {
         eMail.setLabel(languageConstants.EMail);
         schoolClass.setLabel(languageConstants.SchoolClass);
         submitButton.setLabel(languageConstants.Submit);
+        languagePicker.setLabel(languageConstants.PickALanguage);
+        ComboBox.removeAllItems();
+        ComboBox.addItem(languageConstants.Login);
+        ComboBox.addItem(languageConstants.Registration);
     }
 
     private void setupComboBox() {
@@ -97,15 +119,13 @@ public class LoginPage extends JFrame {
         ComboBox.addActionListener(e -> {
             String selectedItem = (String) ComboBox.getSelectedItem();
 
+            if (selectedItem == null) return;
             if (selectedItem.equals(languageConstants.Login)) {
                 onSetLogin();
             } else if (selectedItem.equals(languageConstants.Registration)) {
                 onSetRegistration();
             }
         });
-
-        ComboBox.addItem(languageConstants.Login);
-        ComboBox.addItem(languageConstants.Registration);
 
         setRegistration();
         SetLogin();
@@ -208,7 +228,7 @@ public class LoginPage extends JFrame {
     }
 
     private void OpenMainPage(User user, List<SchoolSubject> schoolSubjects) {
-        MainPage mainPage = new MainPage(dataService, user, schoolSubjects,languageConstants);
+        MainPage mainPage = new MainPage(dataService, user, schoolSubjects, languageConstants);
         mainPage.pack();
         mainPage.setVisible(true);
     }

@@ -9,10 +9,10 @@ import jakarta.persistence.Id;
 
 @Entity
 public class SchoolClass {
+    public String name;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    public String name;
 
     public SchoolClass() {
     }
@@ -22,7 +22,7 @@ public class SchoolClass {
     }
 
     @JsonCreator
-    private static SchoolClass jsonCreator(@JsonProperty("name") String name){
+    private static SchoolClass jsonCreator(@JsonProperty("name") String name) {
         return new SchoolClass(name);
     }
 }

@@ -5,7 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.notenmanager.Exceptions.UserAlreadyExistsException;
-import org.notenmanager.Models.*;
+import org.notenmanager.Models.SchoolSubject;
+import org.notenmanager.Models.User;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -77,6 +78,13 @@ public class JsonService implements DataService {
         return list;
     }
 
+    private static String getSchoolSubjectListPath(String username) {
+        return System.getProperty("user.dir") + "/data-" + username + ".json";
+    }
+
+    private static String getUserListPath() {
+        return System.getProperty("user.dir") + "/users.json";
+    }
 
     @Override
     public void CreateUser(User user) {
@@ -173,14 +181,6 @@ public class JsonService implements DataService {
         }
         WriteToFile(subjects, getSchoolSubjectListPath(user.username));
 
-    }
-
-    private static String getSchoolSubjectListPath(String username) {
-        return System.getProperty("user.dir") + "/data-" + username + ".json";
-    }
-
-    private static String getUserListPath() {
-        return System.getProperty("user.dir") + "/users.json";
     }
 
 }

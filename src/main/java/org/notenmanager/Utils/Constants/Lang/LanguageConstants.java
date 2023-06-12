@@ -1,7 +1,5 @@
 package org.notenmanager.Utils.Constants.Lang;
 
-import org.notenmanager.Models.Grade;
-
 public class LanguageConstants {
 
     public String Login;
@@ -25,6 +23,10 @@ public class LanguageConstants {
     public String Grade;
     public String Gravity;
     public String SubjectName;
+    public String Back;
+    public String Average;
+    public String AverageWithGravity;
+    public String PickALanguage;
 
     public LanguageConstants() {
         Login = "Login";
@@ -37,8 +39,8 @@ public class LanguageConstants {
         Submit = "Submit";
         PasswordMismatch = "Passwords are not matching!";
         InnateWarning = "Innate Warning";
-        Teacher = "Teacher";
-        Subject = "Subject";
+        Teacher = "Teacher: ";
+        Subject = "Subject: ";
         Empty = "List is Empty Add new Item!";
         AddGrade = "Add Grade";
         RemoveGrade = "Remove Grade/s";
@@ -47,7 +49,15 @@ public class LanguageConstants {
         Grade = "Grade: ";
         Gravity = "Gravity: ";
         SubjectName = "Subject Name: ";
+        Back = "Back";
+        Average = "Average: ";
+        AverageWithGravity = "Average with gravity: ";
+        PickALanguage = "Pick a Language: ";
 
+    }
+
+    public String NotenManagerTitle(String username) {
+        return "NotenManager of User: " + username;
     }
 
     public String UsernameAlreadyExists(String username) {

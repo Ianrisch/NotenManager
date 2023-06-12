@@ -20,17 +20,17 @@ public class MultipleOptionDialog {
         int option = JOptionPane.showConfirmDialog(parent, inputFields, title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
         if (option == JOptionPane.OK_OPTION) {
-            String [] splitName = personName.getText().split(" ");
-            if(splitName.length < 2) return null;
-            return new SchoolSubject(new Person(splitName[0],splitName[1]) , subjectName.getText(), new ArrayList());
+            String[] splitName = personName.getText().split(" ");
+            if (splitName.length < 2) return null;
+            return new SchoolSubject(new Person(splitName[0], splitName[1]), subjectName.getText(), new ArrayList());
         }
         return null;
     }
+
     public static Grade showGradeInputMessageDialog(Component parent, String title, String gradeDescription, String gravityDescription) {
 
-        JSpinner value = new JSpinner(new SpinnerNumberModel(1.0f,1.0f,6.0f,0.5f));
-        JSpinner gravity = new JSpinner(new SpinnerNumberModel(1.0d,1.0d,6.0d,0.5d));
-
+        JSpinner value = new JSpinner(new SpinnerNumberModel(1.0f, 1.0f, 6.0f, 0.5f));
+        JSpinner gravity = new JSpinner(new SpinnerNumberModel(1.0d, 1.0d, 6.0d, 0.5d));
 
 
         Object[] inputFields = {gradeDescription, value,
@@ -39,7 +39,7 @@ public class MultipleOptionDialog {
         int option = JOptionPane.showConfirmDialog(parent, inputFields, title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
         if (option == JOptionPane.OK_OPTION) {
-            return new Grade((Double) value.getValue(),(Double) gravity.getValue());
+            return new Grade((Double) value.getValue(), (Double) gravity.getValue());
         }
         return null;
     }

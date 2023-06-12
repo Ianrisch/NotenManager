@@ -10,11 +10,11 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Person {
+    public String firstName;
+    public String lastName;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    public String firstName;
-    public String lastName;
 
     public Person() {
     }

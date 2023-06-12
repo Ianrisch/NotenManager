@@ -24,7 +24,8 @@ public class LabeledComboBoxField extends Lable {
     public LabeledComboBoxField(boolean shouldBeMultiline) {
         this("", shouldBeMultiline);
     }
-    public String getSelectedItem(){
+
+    public String getSelectedItem() {
         Object selectedItem = comboBox.getSelectedItem();
         if (selectedItem == null) return null;
         return selectedItem.toString();
