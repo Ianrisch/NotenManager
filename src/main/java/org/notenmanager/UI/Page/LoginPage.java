@@ -58,12 +58,6 @@ public class LoginPage extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new LoginPage();
-        frame.pack();
-        frame.setVisible(true);
-    }
-
     public boolean isLogin() {
         return !isRegistration();
     }

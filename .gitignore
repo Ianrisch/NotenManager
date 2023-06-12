@@ -41,3 +41,5 @@ src/main/resources/hibernate.cfg.xml
 src/test/resources/hibernate.cfg.xml
 
 .idea/workspace.xml
+
+out/
