@@ -109,14 +109,34 @@ public class DatabaseService implements DataService {
     public void DeleteUser(String username) {
         User user = GetUser(username);
         CreateSessionAndExecute(session -> {
-            session.delete(user);
+            session.remove(user);
             return null;
         });
     }
 
     @Override
     public List<SchoolSubject> GetSchoolSubjectsFromUser(User user) {
-        return null;
+        return CreateSessionAndExecute(session -> {
+            User query = session.createQuery(
+                    "select u from User u " +
+                            "where u.username = '" + user.username + "' "
+                    , User.class).getSingleResult();
+
+
+            return query.schoolSubjects;
+        });
+    }
+
+    private SchoolSubject GetSchoolSubjectFromUser(User user, String nameOfSubject) {
+        return CreateSessionAndExecute(session -> {
+            SchoolSubject query = session.createQuery(
+                    "select s from SchoolSubject s " +
+                            "where s.name = '" + nameOfSubject + "' "+
+                            "and s.user.username = '" + user.username +"' "
+                    , SchoolSubject.class).getSingleResult();
+
+            return query;
+        });
     }
 
     private <Output> Output CreateSessionAndExecute(IOConsumer<Session, Output> consumer) {
