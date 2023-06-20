@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,6 +34,17 @@ public class SchoolSubject {
         this.teacher = teacher;
         this.name = name;
         this.grades = grades;
+    }
+
+    public SchoolSubject(SchoolSubject schoolSubject) {
+        teacher = schoolSubject.teacher;
+
+        name = schoolSubject.name;
+
+        grades =new ArrayList();
+        for (Grade grade : schoolSubject.grades){
+            grades.add(new Grade(grade));
+        }
     }
 
     @JsonCreator

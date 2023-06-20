@@ -27,6 +27,11 @@ public class Grade {
     public Grade() {
     }
 
+    public Grade(Grade grade) {
+        value = grade.value;
+        gravity = grade.gravity;
+    }
+
     @JsonCreator
     private static Grade createGrade(@JsonProperty("value") double value, @JsonProperty("gravity") double gravity) {
         return new Grade(value, gravity);

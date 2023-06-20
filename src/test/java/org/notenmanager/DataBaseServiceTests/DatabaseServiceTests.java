@@ -20,7 +20,9 @@ public class DatabaseServiceTests {
     public SessionFactory sessionFactory;
     protected Person person = new Person("Kek", "dietrich");
     protected List<Grade> grades = new ArrayList();
-    protected SchoolSubject subject = new SchoolSubject(person, "LF5", grades);
+    protected SchoolSubject subject = new SchoolSubject(person, subjectName, grades);
+    protected static String subjectName = "LF5";
+
     protected SchoolClass classe = new SchoolClass("Someclass");
     protected User existentUser = new User("thunfischeis", "securepaswd", "mail@trash.internet", classe);
     protected DatabaseService sut;

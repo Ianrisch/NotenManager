@@ -14,7 +14,7 @@ public class User {
     public String username;
     public String password;
     public String mail;
-    @OneToOne(targetEntity = SchoolClass.class, cascade = CascadeType.REMOVE)
+    @OneToOne(targetEntity = SchoolClass.class, cascade = CascadeType.REFRESH)
     public SchoolClass schoolClass;
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     public List<SchoolSubject> schoolSubjects;

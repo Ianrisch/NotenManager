@@ -165,7 +165,7 @@ public class DatabaseService implements DataService {
 
             try {
                 CreateUser(user);
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
 
@@ -175,7 +175,6 @@ public class DatabaseService implements DataService {
 
             schoolSubject.addRelationPartner(user);
             session.persist(schoolSubject);
-
 
 
             schoolSubject.grades.forEach(grade -> {
@@ -199,7 +198,9 @@ public class DatabaseService implements DataService {
 
     @Override
     public void UpdateSchoolSubjectForUser(User user, String nameOfSubjectToUpdate, SchoolSubject schoolSubject) {
-
+        SchoolSubject toUpdate = new SchoolSubject(schoolSubject);
+        DeleteSchoolSubjectForUser(user, nameOfSubjectToUpdate);
+        CreateSchoolSubjectForUser(user, toUpdate);
     }
 
     @Override
