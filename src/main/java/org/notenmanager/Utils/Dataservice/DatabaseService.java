@@ -169,6 +169,10 @@ public class DatabaseService implements DataService {
 
     @Override
     public void DeleteSchoolSubjectForUser(User user, String nameOfSubject) {
-
+        SchoolSubject toDelete = GetSchoolSubjectFromUser(user ,nameOfSubject);
+        CreateSessionAndExecute(session -> {
+            session.remove(toDelete);
+            return null;
+        });
     }
 }
