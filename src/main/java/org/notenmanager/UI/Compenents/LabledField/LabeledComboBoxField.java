@@ -26,7 +26,7 @@ public class LabeledComboBoxField extends Lable {
     }
 
     public String getSelectedItem() {
-        Object selectedItem = comboBox.getSelectedItem();
+        String selectedItem = (String) comboBox.getSelectedItem();
         if (selectedItem == null) return null;
         return selectedItem.toString();
     }

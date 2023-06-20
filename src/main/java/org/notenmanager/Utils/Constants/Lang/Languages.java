@@ -10,10 +10,10 @@ public class Languages {
     public static final String ENGLISH = "English";
 
     public static LanguageConstants PickLanguage(String language) {
+        if (language == null) language = ENGLISH;
         switch (language) {
             case Languages.GERMAN:
                 return new GermanConstants();
-            case Languages.ENGLISH:
             default:
                 return new LanguageConstants();
         }

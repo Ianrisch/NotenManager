@@ -41,21 +41,23 @@ public class MainPage extends JFrame {
     private JScrollPane scrollPane;
     private LabeledComboBoxField languagePicker = new LabeledComboBoxField(false);
 
-    public MainPage(DataService dataService, User user, List<SchoolSubject> schoolSubjects, LanguageConstants languageConstants) {
+    public MainPage(DataService dataService, User user, List<SchoolSubject> schoolSubjects, String language) {
         super();
         setLayout(new GridBagLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(950, 500));
         setPreferredSize(new Dimension(950, 500));
 
-        this.dataService = dataService;
-        this.languageConstants = languageConstants;
-        this.user = user;
-        updateTitle();
         this.schoolSubjects = schoolSubjects;
-
+        this.dataService = dataService;
+        this.user = user;
 
         createUIComponents();
+        languagePicker.comboBox.setSelectedItem(null);
+        languagePicker.comboBox.setSelectedItem(language);
+
+        updateTitle();
+
 
         setContentPane(base);
 
@@ -174,8 +176,6 @@ public class MainPage extends JFrame {
         base.add(languagePicker, gbc);
         gbc.gridx = 0;
         gbc.gridy++;
-
-        setLabels();
 
         base.add(teacher, gbc);
         gbc.gridx++;

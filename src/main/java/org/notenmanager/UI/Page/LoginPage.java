@@ -39,8 +39,16 @@ public class LoginPage extends JFrame {
 
     public LoginPage(DataService dataService, String language) {
         this();
-        this.dataService = dataService;
-        this.languageConstants = Languages.PickLanguage(language);
+        languagePicker.comboBox.setSelectedItem(null);
+        languagePicker.comboBox.setSelectedItem(language);
+
+        persistencePicker.comboBox.setSelectedItem(null);
+
+        if (dataService instanceof DatabaseService) {
+            persistencePicker.comboBox.setSelectedItem(languageConstants.Online);
+        } else {
+            persistencePicker.comboBox.setSelectedItem(languageConstants.Local);
+        }
     }
 
     public LoginPage() {
@@ -50,9 +58,6 @@ public class LoginPage extends JFrame {
         setMinimumSize(new Dimension(400, 600));
         setSize(new Dimension(400, 600));
         setResizable(false);
-
-        languageConstants = new LanguageConstants();
-        dataService = new JsonService();
 
         createUIComponents();
 
@@ -69,7 +74,7 @@ public class LoginPage extends JFrame {
     }
 
     private void createUIComponents() {
-        setLabels();
+
 
         base.setLayout(new GridBagLayout());
         base.setBorder(new EmptyBorder(25, 25, 25, 25));
@@ -80,6 +85,7 @@ public class LoginPage extends JFrame {
         gbc.gridy = 0;
 
         Languages.setupLanguagePicker(languagePicker, a -> OnPickLanguage(a));
+        OnPickLanguage(null);
         base.add(languagePicker, gbc);
         gbc.gridy++;
 
@@ -98,12 +104,17 @@ public class LoginPage extends JFrame {
 
     private void setupPersistencePicker() {
         persistencePicker.comboBox.addActionListener(a -> {
-            if (persistencePicker.getSelectedItem().equals(languageConstants.Online)) {
-                dataService = new DatabaseService();
-            } else {
-                dataService = new JsonService();
-            }
+            setDataService();
         });
+        setDataService();
+    }
+
+    private void setDataService() {
+        if (Objects.equals(persistencePicker.getSelectedItem(), languageConstants.Online)) {
+            dataService = new DatabaseService();
+        } else {
+            dataService = new JsonService();
+        }
     }
 
     private void OnPickLanguage(ActionEvent a) {
@@ -242,7 +253,7 @@ public class LoginPage extends JFrame {
     }
 
     private void OpenMainPage(User user, List<SchoolSubject> schoolSubjects) {
-        MainPage mainPage = new MainPage(dataService, user, schoolSubjects, languageConstants);
+        MainPage mainPage = new MainPage(dataService, user, schoolSubjects, languagePicker.getSelectedItem());
         mainPage.pack();
         mainPage.setVisible(true);
     }
