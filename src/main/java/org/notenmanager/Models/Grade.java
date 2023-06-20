@@ -37,10 +37,6 @@ public class Grade {
         return new Grade(value, gravity);
     }
 
-    @Override
-    public String toString() {
-        return "Grade: " + value + " Gravity: " + gravity;
-    }
 
     public void addRelationPartner(SchoolSubject subject) {
         this.subject = subject;

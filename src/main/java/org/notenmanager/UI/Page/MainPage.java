@@ -76,7 +76,6 @@ public class MainPage extends JFrame {
         schoolSubjectComboBox.comboBox.addActionListener(e -> {
             schoolClass.setText(user.schoolClass.name);
             SetGradeList();
-            UpdateAverage();
         });
 
         if (schoolSubjectComboBox.comboBox.getItemCount() != 0) schoolSubjectComboBox.comboBox.setSelectedIndex(0);
@@ -116,6 +115,7 @@ public class MainPage extends JFrame {
                 break;
             }
         }
+        UpdateAverage();
     }
 
     private void setTeacherName(SchoolSubject schoolSubject) {
@@ -132,7 +132,7 @@ public class MainPage extends JFrame {
 
         for (int i = 0; i < length; i++) {
             Grade grade = grades.get(i);
-            gradeListModel.addElement(grade.toString());
+            gradeListModel.addElement(languageConstants.asString(grade));
             revalidate();
         }
     }
@@ -225,6 +225,7 @@ public class MainPage extends JFrame {
     private void OnPickLanguage(ActionEvent a) {
         languageConstants = Languages.PickLanguage(languagePicker.getSelectedItem());
         setLabels();
+        SetGradeList();
     }
 
     private void OnBack(ActionEvent a) {

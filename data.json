@@ -1,9 +1,0 @@
-[{"teacher":{"firstName":"Sascha","lastName":"Dietrich"},"name":"LF5","grades":[{
-  "value":2.0,
-  "gravity":1.0},{
-  "value":1.0,
-  "gravity":1.0}],"invalid":false},{"teacher":{"firstName":"Heiko","lastName":"Richter"},"name":"LF3","grades":[{
-  "value":1.0,
-  "gravity":1.0},{
-  "value":1.0,
-  "gravity":1.0}],"invalid":false}]

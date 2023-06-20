@@ -1,5 +1,7 @@
 package org.notenmanager.Utils.Constants.Lang;
 
+import org.notenmanager.Models.Grade;
+
 public class LanguageConstants {
 
     public String Login;
@@ -27,6 +29,9 @@ public class LanguageConstants {
     public String Average;
     public String AverageWithGravity;
     public String PickALanguage;
+    public String Persistence;
+    public String Local;
+    public String Online;
 
     public LanguageConstants() {
         Login = "Login";
@@ -53,6 +58,9 @@ public class LanguageConstants {
         Average = "Average: ";
         AverageWithGravity = "Average with gravity: ";
         PickALanguage = "Pick a Language: ";
+        Persistence = "Persistence: ";
+        Local = "Local";
+        Online = "Online";
 
     }
 
@@ -66,5 +74,9 @@ public class LanguageConstants {
 
     public String EmailAlreadyExists(String eMail) {
         return "The EMail \"" + eMail + "\" already Exists!";
+    }
+
+    public String asString(Grade grade) {
+        return Grade + " " + grade.value + " " + Gravity + " " + grade.gravity;
     }
 }

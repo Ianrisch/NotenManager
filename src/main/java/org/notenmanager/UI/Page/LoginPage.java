@@ -9,6 +9,7 @@ import org.notenmanager.UI.Compenents.LabledField.LabeledTextField;
 import org.notenmanager.Utils.Constants.Lang.LanguageConstants;
 import org.notenmanager.Utils.Constants.Lang.Languages;
 import org.notenmanager.Utils.Dataservice.DataService;
+import org.notenmanager.Utils.Dataservice.DatabaseService;
 import org.notenmanager.Utils.Dataservice.JsonService;
 import org.notenmanager.Utils.PasswordService;
 
@@ -31,6 +32,7 @@ public class LoginPage extends JFrame {
     private final JButton submitButton = new JButton();
     private LanguageConstants languageConstants;
     private LabeledComboBoxField languagePicker = new LabeledComboBoxField(false);
+    private LabeledComboBoxField persistencePicker = new LabeledComboBoxField(false);
     private boolean isRegistration = false;
 
     private DataService dataService;
@@ -79,6 +81,10 @@ public class LoginPage extends JFrame {
 
         Languages.setupLanguagePicker(languagePicker, a -> OnPickLanguage(a));
         base.add(languagePicker, gbc);
+        gbc.gridy++;
+
+        setupPersistencePicker();
+        base.add(persistencePicker, gbc);
 
         gbc.gridy++;
         setupComboBox();
@@ -88,6 +94,16 @@ public class LoginPage extends JFrame {
 
         setupContent();
         base.add(content, gbc);
+    }
+
+    private void setupPersistencePicker() {
+        persistencePicker.comboBox.addActionListener(a -> {
+            if (persistencePicker.getSelectedItem().equals(languageConstants.Online)) {
+                dataService = new DatabaseService();
+            } else {
+                dataService = new JsonService();
+            }
+        });
     }
 
     private void OnPickLanguage(ActionEvent a) {
@@ -106,6 +122,10 @@ public class LoginPage extends JFrame {
         ComboBox.removeAllItems();
         ComboBox.addItem(languageConstants.Login);
         ComboBox.addItem(languageConstants.Registration);
+        persistencePicker.setLabel(languageConstants.Persistence);
+        persistencePicker.comboBox.removeAllItems();
+        persistencePicker.comboBox.addItem(languageConstants.Local);
+        persistencePicker.comboBox.addItem(languageConstants.Online);
     }
 
     private void setupComboBox() {

@@ -27,6 +27,9 @@ public class GermanConstants extends LanguageConstants {
         Average = "Durchschnitt: ";
         AverageWithGravity = "Durchschnitt mit Notengewichtung: ";
         PickALanguage = "Wähle eine Sprache: ";
+        Persistence = "Persistenz: ";
+        Local = "Lokal";
+        Online = "Online";
 
     }
 
