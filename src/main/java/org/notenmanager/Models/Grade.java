@@ -15,7 +15,7 @@ public class Grade {
     /**
      * Only for DB pls ignore!!
      */
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "subject_id", nullable = false)
     private SchoolSubject subject;
 

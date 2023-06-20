@@ -8,6 +8,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.notenmanager.Exceptions.AlreadyExistsException;
 import org.notenmanager.Exceptions.UserAlreadyExistsException;
+import org.notenmanager.Models.Person;
 import org.notenmanager.Models.SchoolClass;
 import org.notenmanager.Models.SchoolSubject;
 import org.notenmanager.Models.User;
@@ -131,8 +132,8 @@ public class DatabaseService implements DataService {
         return CreateSessionAndExecute(session -> {
             SchoolSubject query = session.createQuery(
                     "select s from SchoolSubject s " +
-                            "where s.name = '" + nameOfSubject + "' "+
-                            "and s.user.username = '" + user.username +"' "
+                            "where s.name = '" + nameOfSubject + "' " +
+                            "and s.user.username = '" + user.username + "' "
                     , SchoolSubject.class).getSingleResult();
 
             return query;
@@ -159,7 +160,41 @@ public class DatabaseService implements DataService {
 
     @Override
     public void CreateSchoolSubjectForUser(User user, SchoolSubject schoolSubject) {
+        DeleteSchoolSubjectForUser(user, schoolSubject.name);
+        CreateSessionAndExecute(session -> {
 
+            try {
+                CreateUser(user);
+            }catch (Exception e){
+
+            }
+
+            if (!PersonExists(schoolSubject.teacher)) {
+                session.persist(schoolSubject.teacher);
+            }
+
+            schoolSubject.addRelationPartner(user);
+            session.persist(schoolSubject);
+
+
+
+            schoolSubject.grades.forEach(grade -> {
+                grade.addRelationPartner(schoolSubject);
+                session.persist(grade);
+            });
+            return null;
+        });
+    }
+
+    private boolean PersonExists(Person person) {
+        return GetPerson(person) != null;
+    }
+
+    private Person GetPerson(Person person) {
+        return CreateSessionAndExecute(session -> session.createQuery("select p from Person p " +
+                        "where p.firstName = '" + person.firstName + "' " +
+                        "and p.lastName = '" + person.lastName + "' "
+                , Person.class).getSingleResult());
     }
 
     @Override
@@ -169,10 +204,11 @@ public class DatabaseService implements DataService {
 
     @Override
     public void DeleteSchoolSubjectForUser(User user, String nameOfSubject) {
-        SchoolSubject toDelete = GetSchoolSubjectFromUser(user ,nameOfSubject);
+        SchoolSubject toDelete = GetSchoolSubjectFromUser(user, nameOfSubject);
         CreateSessionAndExecute(session -> {
             session.remove(toDelete);
             return null;
         });
     }
+
 }

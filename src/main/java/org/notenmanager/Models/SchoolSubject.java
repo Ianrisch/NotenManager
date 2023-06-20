@@ -3,6 +3,7 @@ package org.notenmanager.Models;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
@@ -10,7 +11,8 @@ import java.util.List;
 public class SchoolSubject {
 
     public String name;
-    @OneToOne(targetEntity = Person.class, cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "schoolSubject_id", nullable = false)
     public Person teacher;
     @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     public List<Grade> grades;
@@ -20,7 +22,7 @@ public class SchoolSubject {
     /**
      * Only for DB pls ignore!!
      */
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 

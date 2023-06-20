@@ -5,12 +5,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.junit.jupiter.api.Assertions;
 import org.notenmanager.Models.*;
 import org.notenmanager.Utils.Consumer.IOConsumer;
 import org.notenmanager.Utils.Dataservice.DatabaseService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class DatabaseServiceTests {
@@ -95,5 +97,22 @@ public class DatabaseServiceTests {
             session.getTransaction().commit();
         }
         return output;
+    }
+    public boolean AssertSubjectExists(SchoolSubject expected, List<SchoolSubject> actual) {
+        for (SchoolSubject s : actual) {
+            if (!(Objects.equals(expected.name, s.name))) continue;
+            Assertions.assertEquals(expected.name, s.name);
+            Assertions.assertEquals(expected.teacher.fullName(), s.teacher.fullName());
+
+            Assertions.assertEquals(expected.grades.size(), s.grades.size(), "Grades Length doesn't Match");
+            for (int i = 0; i < s.grades.size(); i++) {
+                Grade expectedGrade = expected.grades.get(i);
+                Grade actualGrade = s.grades.get(i);
+                Assertions.assertEquals(expectedGrade.value, actualGrade.value);
+                Assertions.assertEquals(expectedGrade.gravity, actualGrade.gravity);
+            }
+            return true;
+        }
+        return false;
     }
 }
