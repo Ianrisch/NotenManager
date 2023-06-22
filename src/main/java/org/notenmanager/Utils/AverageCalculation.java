@@ -17,10 +17,12 @@ public class AverageCalculation {
 
     public static double averageWithGravity(SchoolSubject subject) {
         double allGradesAdded = 0;
+        long gradeCount = subject.grades.size();
         for (Grade grade : subject.grades) {
             allGradesAdded += grade.value * grade.gravity;
+            gradeCount += grade.gravity-1;
         }
-        long gradeCount = subject.grades.size();
+
         double average = allGradesAdded / gradeCount;
         return average;
     }

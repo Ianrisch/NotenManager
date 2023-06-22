@@ -19,8 +19,8 @@ public class GermanConstants extends LanguageConstants {
         Empty = "Diese Liste ist Leer füge ein neues Item hinzu!";
         AddGrade = "Note hinzufügen";
         RemoveGrade = "Note/n entfernen";
-        AddSubject = "Klasse hinzufügen";
-        RemoveSubject = "Klasse entfernen";
+        AddSubject = "Fach hinzufügen";
+        RemoveSubject = "Fach entfernen";
         Grade = "Note: ";
         Gravity = "Gewichtung: ";
         Back = "Zurück";
