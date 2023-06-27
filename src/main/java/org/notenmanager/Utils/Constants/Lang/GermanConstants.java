@@ -23,6 +23,7 @@ public class GermanConstants extends LanguageConstants {
         RemoveSubject = "Fach entfernen";
         Grade = "Note: ";
         Gravity = "Gewichtung: ";
+        SubjectName = "Name des Fachs: ";
         Back = "Zurück";
         Average = "Durchschnitt: ";
         AverageWithGravity = "Durchschnitt mit Notengewichtung: ";
