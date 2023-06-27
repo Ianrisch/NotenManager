@@ -1,6 +1,6 @@
 package org.notenmanager;
 
-import org.notenmanager.UI.Page.LoginPage;
+import org.notenmanager.UI.Pages.LoginPage;
 
 import javax.swing.*;
 

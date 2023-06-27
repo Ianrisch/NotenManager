@@ -1,4 +1,4 @@
-package org.notenmanager.UI.Page;
+package org.notenmanager.UI.Pages;
 
 import org.notenmanager.Models.Grade;
 import org.notenmanager.Models.SchoolSubject;
