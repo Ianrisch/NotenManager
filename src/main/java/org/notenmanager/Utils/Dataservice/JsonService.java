@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonService implements DataService {
-    private List<User> users = null;
+    private final List<User> users;
     private List<SchoolSubject> subjects = null;
 
 
@@ -30,50 +30,49 @@ public class JsonService implements DataService {
             mapper.writeValue(new File(fileLocation), list);
         } catch (IOException e) {
             e.printStackTrace();
+
+            CreateFile(fileLocation);
         }
 
     }
 
     private static List<User> GetUserFromFile(String fileLocation) {
 
-        List<User> list = new ArrayList();
+        List<User> list = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         try {
-            list = mapper.readValue(new File(fileLocation), new TypeReference<List<User>>() {
+            list = mapper.readValue(new File(fileLocation), new TypeReference<>() {
             });
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("File is not created creating a file!");
-            try {
-                FileWriter writer = new FileWriter(fileLocation);
-                writer.write("[]");
-                writer.close();
-            } catch (IOException e2) {
-                e.printStackTrace();
-            }
+
+            CreateFile(fileLocation);
         }
         return list;
     }
 
+    private static void CreateFile(String fileLocation) {
+        System.out.println("File is not created creating a file!");
+        try {
+            FileWriter writer = new FileWriter(fileLocation);
+            writer.write("[]");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static List<SchoolSubject> GetSchoolSubjectFromFile(String fileLocation) {
 
-        List<SchoolSubject> list = new ArrayList();
+        List<SchoolSubject> list = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         try {
-            list = mapper.readValue(new File(fileLocation), new TypeReference<List<SchoolSubject>>() {
+            list = mapper.readValue(new File(fileLocation), new TypeReference<>() {
             });
         } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("File is not created creating a file!");
-            try {
-                FileWriter writer = new FileWriter(fileLocation);
-                writer.write("[]");
-                writer.close();
-            } catch (IOException e2) {
-                e.printStackTrace();
-            }
+            CreateFile(fileLocation);
         }
         return list;
     }
